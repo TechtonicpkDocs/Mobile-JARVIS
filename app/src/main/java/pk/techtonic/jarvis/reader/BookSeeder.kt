@@ -7,18 +7,25 @@ import pk.techtonic.jarvis.data.JarvisDb
 import pk.techtonic.jarvis.data.JarvisPrefs
 
 /**
- * Seeds the 9 pre-loaded books from assets/books/ into the books table,
- * exactly once. Runs on a background thread; never blocks the UI.
+ * Seeds the 9 pre-loaded books from assets/books/ into the books table.
+ * Runs on a background thread; never blocks the UI.
  *
- * Never re-seeds: once [JarvisPrefs.booksSeeded] is true this is a no-op,
- * so a deleted pre-loaded book stays deleted and user bookmarks survive.
- * Seeding is also idempotent per title (a title already in the library is
- * skipped), so a retry after a partial failure cannot duplicate a book.
+ * Seeding is VERSIONED (v1.0.1): [CURRENT_SEED_VERSION] is the seed
+ * version this build requires. When the stored version is lower, the
+ * seed runs again — but it is idempotent per title (a title already in
+ * the library is skipped), so a re-seed only restores MISSING pre-loaded
+ * titles. Existing books are never re-inserted or touched, so bookmarks
+ * and user-added books survive untouched. A deleted pre-loaded book
+ * therefore comes back on the next upgrade that bumps the version;
+ * within one version a deliberate delete stays deleted.
  *
  * The manifest is parsed with a small regex — the file is a flat array of
  * {"file","id","title"} objects, and no JSON library is needed for it.
  */
 object BookSeeder {
+
+    /** Seed version this build requires (v1.0.0 = 1, v1.0.1 = 2). */
+    const val CURRENT_SEED_VERSION = 2
 
     @Volatile private var seeding = false
     private val pendingDone = ArrayList<() -> Unit>()
@@ -29,7 +36,9 @@ object BookSeeder {
     private val TITLE_RE = Regex("\"title\"\\s*:\\s*\"([^\"]+)\"")
 
     /**
-     * Seed if needed. [onDone] runs on the main thread when seeding
+     * Seed if needed: runs whenever the stored seed version is below
+     * [CURRENT_SEED_VERSION] (fresh install, or an upgrade that bumped
+     * the version). [onDone] runs on the main thread when seeding
      * finishes (or immediately, on the main thread, when already seeded).
      * Safe to call again while a seed is running: the callback is queued
      * and runs when the in-flight seed finishes.
@@ -40,7 +49,7 @@ object BookSeeder {
         prefs: JarvisPrefs,
         onDone: (() -> Unit)? = null
     ) {
-        if (prefs.booksSeeded) {
+        if (prefs.booksSeedVersion >= CURRENT_SEED_VERSION) {
             if (onDone != null) mainHandler.post(onDone)
             return
         }
@@ -74,7 +83,10 @@ object BookSeeder {
                 // Only mark seeded when every book landed; otherwise the
                 // next open retries (existing titles are skipped, so no
                 // duplicates can appear).
-                if (allOk) prefs.booksSeeded = true
+                if (allOk) {
+                    prefs.booksSeedVersion = CURRENT_SEED_VERSION
+                    prefs.booksSeeded = true
+                }
             } catch (e: Exception) {
                 // Leave booksSeeded false so the next open retries.
             } finally {

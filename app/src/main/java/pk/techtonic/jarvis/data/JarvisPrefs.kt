@@ -101,6 +101,17 @@ class JarvisPrefs(context: Context) {
         get() = sp.getBoolean(KEY_BOOKS_SEEDED, false)
         set(value) = sp.edit().putBoolean(KEY_BOOKS_SEEDED, value).apply()
 
+    /**
+     * Library seed version completed (0 = never seeded). v1.0.0 seeded
+     * once (version 1, via [booksSeeded]); v1.0.1 bumps the required
+     * version to 2, so an upgrade re-runs the seed for any MISSING
+     * pre-loaded titles only — a deleted pre-loaded book comes back,
+     * while existing books (and their bookmarks) are never touched.
+     */
+    var booksSeedVersion: Int
+        get() = sp.getInt(KEY_BOOKS_SEED_VERSION, 0)
+        set(value) = sp.edit().putInt(KEY_BOOKS_SEED_VERSION, value).apply()
+
     fun hasKey(): Boolean = geminiKey.isNotBlank()
 
     companion object {
@@ -123,5 +134,6 @@ class JarvisPrefs(context: Context) {
         const val KEY_TASBIH_TARGET = "tasbihTarget"
         const val KEY_BATTERY_HINT_SHOWN = "batteryHintShown"
         const val KEY_BOOKS_SEEDED = "booksSeeded"
+        const val KEY_BOOKS_SEED_VERSION = "booksSeedVersion"
     }
 }

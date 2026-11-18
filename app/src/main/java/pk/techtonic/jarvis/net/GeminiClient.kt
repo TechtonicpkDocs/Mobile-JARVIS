@@ -34,7 +34,10 @@ import pk.techtonic.jarvis.data.JarvisPrefs
  * - Final failure -> onError("chat_server_busy"). The user NEVER sees a
  *   bare "503" or any raw code.
  * - 400/401/403 -> immediate onError("chat_error"), no retry, no fallback.
- * - Network IOException -> onError("chat_offline").
+ * - Network IOException (DNS blip, momentary drop on a slow mobile
+ *   connection) -> retried exactly like a retryable code (2 s, then 4 s);
+ *   onError("chat_offline") only after the retries are exhausted. One
+ *   transient hiccup must never fail the request.
  * - `testKey`: one retry after 2 s on retryable codes, then
  *   onError("chat_server_busy") — the key is probably fine. No fallback.
  */
@@ -141,6 +144,12 @@ class GeminiClient(private val prefs: JarvisPrefs) {
      * first retryable failure and 4 s after the second. The cancelled flag
      * is checked before every attempt and during every sleep, so Stop
      * during backoff halts immediately.
+     *
+     * A transient network failure ([AttemptResult.Offline]) is retried
+     * exactly like a retryable HTTP code — a DNS blip or a momentary
+     * drop on a slow mobile connection must not fail the request on the
+     * first hiccup. Only when the attempts are exhausted with the last
+     * failure still offline does the caller report "offline".
      */
     private fun attemptWithRetries(
         call: HttpCall,
@@ -157,9 +166,9 @@ class GeminiClient(private val prefs: JarvisPrefs) {
             when (result) {
                 is AttemptResult.Success,
                 is AttemptResult.Fatal,
-                is AttemptResult.Offline,
                 is AttemptResult.Cancelled -> return result
-                is AttemptResult.Retryable -> {
+                is AttemptResult.Retryable,
+                is AttemptResult.Offline -> {
                     last = result
                     attempt++
                     if (attempt < maxAttempts) {

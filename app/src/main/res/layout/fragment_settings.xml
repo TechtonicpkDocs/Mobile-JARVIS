@@ -80,6 +80,16 @@
                 android:visibility="gone"
                 style="@style/JarvisButton.Stop" />
 
+            <!-- Test Key result stays visible here (v1.0.1): a 2-second
+                 toast was too easy to miss. -->
+            <TextView
+                android:id="@+id/set_test_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:visibility="gone"
+                style="@style/JarvisTextUrdu" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -27,6 +27,7 @@
     <string name="chat_stop_speaking">بولنا بند کریں</string>
     <string name="chat_server_busy">Gemini کا سرور مصروف ہے، تھوڑی دیر بعد دوبارہ کوشش کریں</string>
     <string name="chat_fallback_used">جواب ہلکے ماڈل سے آیا ہے</string>
-    <string name="chat_offline">انٹرنیٹ نہیں چل رہا — کنکشن چیک کریں</string>
+    <string name="chat_offline">Gemini سے رابطہ نہیں ہو سکا — کئی بار کوشش کے بعد بھی جواب نہیں ملا۔ اپنا انٹرنیٹ چیک کر کے دوبارہ کوشش کریں</string>
     <string name="chat_error">درخواست مسترد ہو گئی — سیٹنگز میں اپنی Gemini key چیک کریں</string>
+    <string name="chat_error_prefix">خرابی: </string>
 </resources>

@@ -28,13 +28,16 @@
 
     </LinearLayout>
 
+    <!-- Play is the card's action (v1.0.1): tap it to open the reader AND
+         start playback. Delete moved to the reader view — a big Delete on
+         every card cost the user a book on 2026-11-18. -->
     <Button
-        android:id="@+id/kitab_item_delete"
+        android:id="@+id/kitab_item_play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="@dimen/pad_small"
-        style="@style/JarvisButton.Secondary"
-        android:text="@string/kitab_delete" />
+        style="@style/JarvisButton"
+        android:text="@string/kitab_play" />
 
 </LinearLayout>

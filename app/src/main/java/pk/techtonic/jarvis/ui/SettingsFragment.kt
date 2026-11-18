@@ -58,6 +58,7 @@ class SettingsFragment : Fragment() {
     private lateinit var toggleKeyButton: Button
     private lateinit var testButton: Button
     private lateinit var stopButton: Button
+    private lateinit var testStatus: TextView
     private lateinit var langGroup: RadioGroup
     private lateinit var voiceSwitch: Switch
     private lateinit var voiceSummary: TextView
@@ -96,6 +97,7 @@ class SettingsFragment : Fragment() {
         toggleKeyButton = view.findViewById(R.id.set_togglekey)
         testButton = view.findViewById(R.id.set_testkey)
         stopButton = view.findViewById(R.id.set_test_stop)
+        testStatus = view.findViewById(R.id.set_test_status)
         langGroup = view.findViewById(R.id.set_lang_group)
         voiceSwitch = view.findViewById(R.id.set_voice)
         voiceSummary = view.findViewById(R.id.set_voice_summary)
@@ -160,23 +162,35 @@ class SettingsFragment : Fragment() {
             testCall = null
             testButton.isEnabled = true
             stopButton.visibility = View.GONE
+            showTestStatus(getString(R.string.stopped))
             toast(R.string.stopped)
         }
     }
 
+    /** The Test Key result stays visible under the button — a 2-second
+        toast was too easy to miss (phone test 2026-11-18). */
+    private fun showTestStatus(text: String) {
+        if (!::testStatus.isInitialized) return
+        testStatus.text = text
+        testStatus.visibility = View.VISIBLE
+    }
+
     private fun testKey() {
         if (prefs.geminiKey.isBlank()) {
+            showTestStatus(getString(R.string.set_test_nokey))
             toast(R.string.set_test_nokey)
             return
         }
         testButton.isEnabled = false
         stopButton.visibility = View.VISIBLE
+        showTestStatus(getString(R.string.set_test_running))
         testCall = GeminiClient(prefs).testKey(
             onOk = {
                 testCall = null
                 if (!isAdded) return@testKey
                 testButton.isEnabled = true
                 stopButton.visibility = View.GONE
+                showTestStatus(getString(R.string.set_test_ok))
                 toast(R.string.set_test_ok)
             },
             onError = { err ->
@@ -184,6 +198,8 @@ class SettingsFragment : Fragment() {
                 if (!isAdded) return@testKey
                 testButton.isEnabled = true
                 stopButton.visibility = View.GONE
+                // Persistent line + the toast.
+                showTestStatus(resolveErrorMessage(err))
                 toast(resolveErrorMessage(err))
             }
         )

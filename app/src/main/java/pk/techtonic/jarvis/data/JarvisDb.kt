@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper
  *
  * Tables mirror the HTML v1.0.0 localStorage stores, plus the native
  * additions (book library, tasbih daily totals):
- * - chat  <- jvs_chat   (role: "user" | "ai", text, ts)
+ * - chat  <- jvs_chat   (role: "user" | "ai" | "error", text, ts)
  * - notes <- jvs_notes  (text, date "YYYY-MM-DD" or "", time "HH:MM" or "",
  *   pinned 0/1, created). date+time together drive reminder alerts.
  * - milk  <- jvs_milk   (date "YYYY-MM-DD", litres_milli, rate_paisa,

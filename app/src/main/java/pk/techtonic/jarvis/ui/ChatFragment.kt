@@ -40,6 +40,10 @@ import pk.techtonic.jarvis.util.TextCleaner
  * - Mic: MicPermission.ensure -> SpeechInput; the transcript lands in the
  *   input field (typed input is ALWAYS visible next to the mic).
  * - No key: sending shows chat_no_key plainly, no crash, no network.
+ * - Every failure (no key, offline, server busy, API error) is stored
+ *   as a visible "error" row in the chat history itself — a 2-second
+ *   toast was too easy to miss (phone test 2026-11-18: "na koi error
+ *   na koi response"). The toast is kept too; the row is the fix.
  * - onPause cancels any in-flight call; every callback is guarded with
  *   alive() so no orphan callback touches a dead fragment.
  */
@@ -199,7 +203,11 @@ class ChatFragment : Fragment() {
         if (text.isEmpty()) return
         if (currentCall != null) return // one request at a time
         if (!act.prefs.hasKey()) {
-            // No key: plain message, no crash, no network.
+            // No key: the failure stays visible in the chat itself —
+            // a toast alone was too easy to miss. No network call.
+            inputField?.setText("")
+            act.db.addChat(ROLE_USER, text)
+            addErrorRow(R.string.chat_no_key)
             toast(R.string.chat_no_key)
             return
         }
@@ -234,10 +242,20 @@ class ChatFragment : Fragment() {
                     showTyping(false)
                     stopButton?.visibility = View.GONE
                     sendButton?.isEnabled = true
+                    // Persistent row in the chat itself + the toast.
+                    addErrorRow(errorStringRes(key))
                     toast(errorStringRes(key))
                 }
             }
         )
+    }
+
+    /** Store a failure as a visible row in the chat history itself. */
+    private fun addErrorRow(messageRes: Int) {
+        val act = mainActivity() ?: return
+        act.db.addChat(ROLE_ERROR, act.getString(messageRes))
+        loadMessages()
+        scrollToBottom()
     }
 
     // ---- Stop (shared stop contract: halt NOW, never retry) ----
@@ -457,13 +475,21 @@ class ChatFragment : Fragment() {
             val speakBtn = view.findViewById<Button>(R.id.chat_item_speak)
 
             val isUser = row.role == ROLE_USER
+            val isError = row.role == ROLE_ERROR
             root.gravity = if (isUser) Gravity.END else Gravity.START
             bubble.setBackgroundResource(
                 if (isUser) R.drawable.bg_bubble_user else R.drawable.bg_bubble_ai
             )
-            messageView.text = TextCleaner.toDisplaySpanned(row.text)
+            // Error rows carry the plain "خرابی: " / "Error: " marker so
+            // a failure can never be mistaken for an answer.
+            messageView.text = if (isError) {
+                getString(R.string.chat_error_prefix) + row.text
+            } else {
+                TextCleaner.toDisplaySpanned(row.text)
+            }
 
-            if (isUser) {
+            if (isUser || isError) {
+                // No copy/share/speak actions on user rows or error rows.
                 actions.visibility = View.GONE
             } else {
                 actions.visibility = View.VISIBLE
@@ -484,5 +510,8 @@ class ChatFragment : Fragment() {
     companion object {
         private const val ROLE_USER = "user"
         private const val ROLE_AI = "ai"
+
+        /** Failure rows (no key / offline / server busy / API error). */
+        private const val ROLE_ERROR = "error"
     }
 }

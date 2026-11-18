@@ -39,11 +39,12 @@ import java.util.Locale
  * Kitab tab (tab 6): the book library + the reader, in one fragment.
  *
  * LIBRARY mode (default): list of books (title + word count + progress %
- * + last-read date); tap a book to open the reader; delete per row (with
- * confirm — deleting a pre-loaded book removes it, it does NOT re-seed);
- * "Add book" opens a dialog (title + paste text + upload .txt/.md).
- * PDF upload stays DEFERRED: the dialog says so plainly, and no PDF
- * extraction is attempted anywhere.
+ * + last-read date); tap a book to open the reader, or tap its Play
+ * button to open the reader AND start playback at once. Delete lives in
+ * the reader view only (with confirm) — a big Delete on every card cost
+ * the user a book on 2026-11-18. "Add book" opens a dialog (title +
+ * paste text + upload .txt/.md). PDF upload stays DEFERRED: the dialog
+ * says so plainly, and no PDF extraction is attempted anywhere.
  *
  * READER mode: book title, progress bar + "chunk X of Y" + %, the current
  * chunk's text, Play / Pause / Resume / Stop (all visible; Stop halts NOW
@@ -129,6 +130,14 @@ class BookReaderFragment : Fragment() {
             .setOnClickListener { showAddBookDialog() }
         root.findViewById<Button>(R.id.kitab_back_button)
             .setOnClickListener { showLibrary() }
+        // Delete lives in the reader view only (v1.0.1): a big Delete on
+        // every library card cost the user a book on 2026-11-18.
+        root.findViewById<Button>(R.id.kitab_reader_delete)
+            .setOnClickListener {
+                val book = books.firstOrNull { it.id == currentBookId }
+                    ?: return@setOnClickListener
+                confirmDeleteBook(book)
+            }
         playButton?.setOnClickListener { onPlayClicked() }
         pauseButton?.setOnClickListener {
             sendServiceCommand(ReadingService.ACTION_PAUSE)
@@ -149,8 +158,10 @@ class BookReaderFragment : Fragment() {
             openReader(book.id)
         }
 
-        // First open: seed the pre-loaded library on a background thread.
-        if (!prefs.booksSeeded && !seeding) {
+        // First open (or an upgrade that bumped the seed version): seed
+        // the pre-loaded library on a background thread. A versioned
+        // re-seed only restores MISSING titles — bookmarks survive.
+        if (prefs.booksSeedVersion < BookSeeder.CURRENT_SEED_VERSION && !seeding) {
             seeding = true
             showLoading(true)
             BookSeeder.seedIfNeeded(act.applicationContext, db, prefs) {
@@ -302,7 +313,7 @@ class BookReaderFragment : Fragment() {
             val book = books[position]
             val titleView = view.findViewById<TextView>(R.id.kitab_item_title)
             val metaView = view.findViewById<TextView>(R.id.kitab_item_meta)
-            val deleteButton = view.findViewById<Button>(R.id.kitab_item_delete)
+            val playButton = view.findViewById<Button>(R.id.kitab_item_play)
             titleView.text = book.title
             val words = wordCountCache.getOrPut(book.id) { countWords(book.text) }
             val total = book.text.length
@@ -310,9 +321,17 @@ class BookReaderFragment : Fragment() {
             metaView.text = getString(R.string.kitab_words, words) + "  •  " +
                 getString(R.string.kitab_progress, pct) + "  •  " +
                 getString(R.string.kitab_last_read, dateFormat.format(Date(book.updated)))
-            deleteButton.setOnClickListener { confirmDeleteBook(book) }
+            // Card Play: open the reader AND start playback at once.
+            playButton.setOnClickListener { playBookFromCard(book) }
             return view
         }
+    }
+
+    /** Card Play: open the reader, then the reader's own Play (same
+        voice-off gate + battery hint as the in-reader button). */
+    private fun playBookFromCard(book: BookRow) {
+        openReader(book.id)
+        onPlayClicked()
     }
 
     private fun countWords(text: String): Int {

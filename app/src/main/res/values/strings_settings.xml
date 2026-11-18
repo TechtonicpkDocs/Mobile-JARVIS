@@ -12,7 +12,7 @@
     <string name="nav_hisab">حساب</string>
     <string name="nav_notes">نوٹس</string>
     <string name="nav_settings">سیٹنگز</string>
-    <string name="set_about_line1">JARVIS موبائل — ورژن 1.0.0</string>
+    <string name="set_about_line1">JARVIS موبائل — ورژن 1.0.1</string>
     <string name="set_about_line2">محمد ریاض کھوڑ</string>
     <string name="set_about_line3">TechtonicPK — لیہ، پاکستان</string>
     <string name="set_about_title">تعارف</string>
@@ -40,6 +40,7 @@
     <string name="set_test_nogemini">چیٹ والا حصہ ابھی لوڈ نہیں ہوا</string>
     <string name="set_test_nokey">پہلے API کلید لکھیں</string>
     <string name="set_test_ok">کلید درست ہے — Gemini جواب دے رہا ہے</string>
+    <string name="set_test_running">کلید جانچی جا رہی ہے…</string>
     <string name="set_testkey">کلید جانچیں</string>
     <string name="set_title">سیٹنگز</string>
     <string name="set_voice_label">آواز آن رکھیں</string>

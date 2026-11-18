@@ -27,6 +27,7 @@
     <string name="chat_stop_speaking">Stop speaking</string>
     <string name="chat_server_busy">The Gemini server is busy, please try again in a little while</string>
     <string name="chat_fallback_used">Answered using the lighter model</string>
-    <string name="chat_offline">No internet connection — please check your connection</string>
+    <string name="chat_offline">Could not reach Gemini after several tries — please check your internet connection and try again</string>
     <string name="chat_error">Request rejected — please check your Gemini key in Settings</string>
+    <string name="chat_error_prefix">Error: </string>
 </resources>

@@ -198,6 +198,16 @@
 
         </LinearLayout>
 
+        <!-- Delete lives here only (v1.0.1): secondary, at the bottom of
+             the reader, still with the confirm dialog. -->
+        <Button
+            android:id="@+id/kitab_reader_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            style="@style/JarvisButton.Secondary"
+            android:text="@string/kitab_delete" />
+
     </LinearLayout>
 
 </LinearLayout>

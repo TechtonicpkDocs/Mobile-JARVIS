@@ -162,8 +162,10 @@ overload, NOT the key, NOT quota, NOT the app):**
   koshish karein". The user must NEVER see a bare "503" or any raw code.
 - NON-RETRYABLE: 400/401/403 -> immediate onError("chat_error") (no
   retry, no fallback — the key or the request is wrong, retrying
-  cannot help). Network IOException (no connectivity) ->
-  onError("chat_offline").
+  cannot help). Network IOException (no connectivity) -> retried
+  exactly like a retryable code (v1.0.1 — one transient hiccup must not
+  fail the request); onError("chat_offline") only after the retries
+  are exhausted.
 - `testKey`: retry ONCE after 2 s on retryable codes; still failing ->
   onError("chat_server_busy") (the key is probably fine — say so, do
   NOT report it as a key error). 400/401/403 -> onError("chat_error").
@@ -372,11 +374,13 @@ Tab 6 (Kitab). Files: `ui/BookReaderFragment.kt`,
   (682,804 B), book5 علماء کی محفل (99,931 B), book6 ایمان اور محنت
   (92,130 B), book7 اعلیٰ حضرت (15,218 B), book8 اے آئی کیا ہے؟
   (81,750 B), book9 بغیر انٹرنیٹ کے ایپ (74,351 B).
-  `BookSeeder.seedIfNeeded(context, db, prefs)`: if `!prefs.booksSeeded`,
-  read the manifest, insert each book (title + full text) into the books
-  table, set `booksSeeded = true`. Runs once, on a background thread,
-  from BookReaderFragment's first open. Never re-seed (user progress in
-  `position` must survive).
+  `BookSeeder.seedIfNeeded(context, db, prefs)`: if the stored seed
+  version is below `CURRENT_SEED_VERSION`, read the manifest, insert
+  each MISSING book (title + full text) into the books table, set the
+  stored version. Runs on a background thread, from BookReaderFragment's
+  first open. Versioned (v1.0.1): a version bump re-seeds missing titles
+  only — a deleted pre-loaded book comes back on upgrade, while existing
+  books (and their bookmarks in `position`) are never touched.
 - **Library UI:** list of books (title + word count + progress % +
   last-read date), tap to open the reader; delete button per book (with
   confirm; deleting a pre-loaded book removes it from the library — it

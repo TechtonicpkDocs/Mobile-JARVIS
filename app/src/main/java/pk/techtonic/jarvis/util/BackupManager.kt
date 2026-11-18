@@ -372,6 +372,8 @@ object BackupManager {
             val role = when (roleRaw) {
                 "user" -> "user"
                 "ai", "assistant" -> "ai"
+                // v1.0.1: failure rows stored in the chat history.
+                "error" -> "error"
                 else -> throw JSONException("bad role")
             }
             val text = reqString(o, "text")

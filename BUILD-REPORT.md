@@ -1,3 +1,74 @@
+# Mobile JARVIS — Native Android Build Report v1.0.1
+
+**Date:** 2026-11-18 · **Version:** 1.0.1 (versionCode 2) · **Package:** `pk.techtonic.jarvis`
+**Scope-locked fix round** for the 6 defects Muhammad Riyaz found on his
+phone on 2026-11-18 (v1.0.0, commit 7f9868c). No new features; nothing
+else changed.
+
+## v1.0.1 — what was fixed
+
+1. **Kitab Play hidden (he deleted «اے آئی کیا ہے؟» by mistake):** every
+   book card now carries a clear Play button — tapping it opens the reader
+   AND starts playback (same voice-off gate + battery hint as the reader's
+   own Play). Delete moved OUT of the card into the reader view only
+   (secondary button at the bottom, confirm dialog kept).
+2. **Deleted pre-loaded book lost:** seeding is now VERSIONED
+   (`BookSeeder.CURRENT_SEED_VERSION = 2`, stored in
+   `prefs.booksSeedVersion`). On upgrade, v1.0.1 re-seeds MISSING
+   pre-loaded titles only — «اے آئی کیا ہے؟» comes back; existing books
+   (and their bookmarks) and user-added books are never touched.
+3. **Chat errors invisible:** every failure (no key, offline, server
+   busy, API error) is now stored as a visible "error" row in the chat
+   history itself (left bubble, marked «خرابی: » / "Error: ", no
+   copy/share/speak actions). The toast is kept too; the row is the fix.
+   Backup import accepts the new "error" role (else a backup containing
+   one would fail the whole import).
+4. **Test Key result invisible:** the result now stays visible as a
+   status line under the Test Key button (running / ok / the error in
+   plain words), plus the toast.
+5. **Network gave up on one hiccup (real bug):** `attemptWithRetries()`
+   returned `Offline` immediately — one transient IOException (DNS blip,
+   momentary drop) instantly failed the request. Offline is now retried
+   exactly like a retryable HTTP code (2 s, then 4 s); "offline" is only
+   reported after the retries are exhausted, and the message is honest
+   ("could not reach Gemini after several tries", not "no internet").
+   503/server-busy retry counts unchanged. Test Key gets the same retry.
+6. **Version bump:** versionCode 1 → 2, versionName 1.0.0 → 1.0.1
+   (build.gradle + About lines, both locales).
+
+**Files changed (16 + 2 docs):** `app/build.gradle`;
+`ui/BookReaderFragment.kt`, `ui/ChatFragment.kt`, `ui/SettingsFragment.kt`;
+`net/GeminiClient.kt`; `reader/BookSeeder.kt`; `data/JarvisPrefs.kt`,
+`data/JarvisDb.kt` (doc line only); `util/BackupManager.kt`;
+`res/layout/item_book.xml`, `res/layout/fragment_book_reader.xml`,
+`res/layout/fragment_settings.xml`; `res/values/strings_chat.xml`,
+`res/values-en/strings_chat.xml`, `res/values/strings_settings.xml`,
+`res/values-en/strings_settings.xml`. **No file added, none deleted** —
+no `git rm` needed in the push file. New strings (2 keys, both locales):
+`chat_error_prefix`, `set_test_running`. `chat_offline` reworded (both
+locales). `set_about_line1` 1.0.0 → 1.0.1 (both locales).
+
+**Gate — PASS:** aapt2 compile exit 0; kotlinc full-tree 0 errors
+(deprecation warnings only, as in v1.0.0); string parity CLEAN — 288 keys
+in values, 288 in values-en (was 286). **JVM gate — 67/67 PASS** (55
+original + 12 new offline checks): offline→offline→200 answers with no
+fallback (3 requests); offline×3 → `chat_offline` with exactly 3 requests
+(no fallback attempt); testKey offline×2 → `chat_offline` (2 requests);
+cancel during offline backoff → no callback, 1 request. All original 503
+scenarios still pass (retry counts unchanged).
+
+**Zip:** `mobile-jarvis-v1.0.1-source.zip` (same composition as v1.0.0,
+push file swapped to `push-jarvis-v101.txt`). Push file: `cd
+~/Mobile-JARVIS`, `git pull origin main`, unzip, `git add -A`, commit
+"Mobile JARVIS v1.0.1", `git push origin main`.
+
+**Still needs his phone (never claimed proven here):** Play on a card
+starts playback; deleted book restored on upgrade; an error row appears
+in chat after a failed send; Test Key status line shows; a flaky
+connection no longer fails on the first hiccup.
+
+---
+
 # Mobile JARVIS — Native Android Build Report v1.0.0
 
 **Date:** 2026-11-18 · **Version:** 1.0.0 (versionCode 1) · **Package:** `pk.techtonic.jarvis`
