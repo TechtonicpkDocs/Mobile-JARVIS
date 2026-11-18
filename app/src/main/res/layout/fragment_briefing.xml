@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/pad_large">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/brief_title"
+            style="@style/JarvisTextUrdu.Title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/brief_intro"
+            style="@style/JarvisTextUrdu" />
+
+        <Button
+            android:id="@+id/brief_generate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:text="@string/brief_generate"
+            style="@style/JarvisButton" />
+
+        <Button
+            android:id="@+id/brief_stop_fetch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/brief_stop"
+            android:visibility="gone"
+            style="@style/JarvisButton.Stop" />
+
+        <TextView
+            android:id="@+id/brief_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/brief_status_idle"
+            style="@style/JarvisTextUrdu" />
+
+        <!-- Date -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_date_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:id="@+id/brief_date_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                style="@style/JarvisTextUrdu" />
+
+            <TextView
+                android:id="@+id/brief_hijri_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                style="@style/JarvisTextUrdu" />
+        </LinearLayout>
+
+        <!-- Weather -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_weather_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:id="@+id/brief_weather_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                style="@style/JarvisTextUrdu" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/brief_temp"
+                    style="@style/JarvisTextUrdu" />
+
+                <TextView
+                    android:id="@+id/brief_temp_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/JarvisTextLatin" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/brief_humidity"
+                    style="@style/JarvisTextUrdu" />
+
+                <TextView
+                    android:id="@+id/brief_humidity_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/JarvisTextLatin" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/brief_wind"
+                    style="@style/JarvisTextUrdu" />
+
+                <TextView
+                    android:id="@+id/brief_wind_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/JarvisTextLatin" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Prayer times -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_prayers_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <LinearLayout
+                android:id="@+id/brief_prayer_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <!-- Notes -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_notes_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:id="@+id/brief_notes_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                style="@style/JarvisTextUrdu" />
+
+            <LinearLayout
+                android:id="@+id/brief_notes_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <!-- Bayan shortcut -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_bayan_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <Button
+                android:id="@+id/brief_bayan_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                style="@style/JarvisButton.Secondary" />
+        </LinearLayout>
+
+        <!-- Speak -->
+        <Button
+            android:id="@+id/brief_speak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:text="@string/brief_speak"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/brief_stop_speak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/brief_stop_speaking"
+            android:visibility="gone"
+            style="@style/JarvisButton.Stop" />
+
+        <TextView
+            android:id="@+id/brief_speaking_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/brief_speaking"
+            android:visibility="gone"
+            style="@style/JarvisTextUrdu" />
+
+    </LinearLayout>
+</ScrollView>

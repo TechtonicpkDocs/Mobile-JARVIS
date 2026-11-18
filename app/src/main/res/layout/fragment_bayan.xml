@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/pad_large">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bayan_title"
+            style="@style/JarvisTextUrdu.Title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/bayan_intro"
+            style="@style/JarvisTextUrdu" />
+
+        <!-- Six scholar cards, contract order. Each opens a YouTube search. -->
+        <Button
+            android:id="@+id/bayan_scholar_0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:text="@string/bayan_scholar_imran"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/bayan_scholar_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/bayan_scholar_habib"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/bayan_scholar_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/bayan_scholar_samar"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/bayan_scholar_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/bayan_scholar_saqib"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/bayan_scholar_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/bayan_scholar_salman"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/bayan_scholar_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:text="@string/bayan_scholar_ajmal"
+            style="@style/JarvisButton.Secondary" />
+
+        <!-- Tasbih -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_large"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tasbih_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:id="@+id/tasbih_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:gravity="center"
+                android:text="0"
+                android:textSize="48sp"
+                style="@style/JarvisTextLatin" />
+
+            <Button
+                android:id="@+id/tasbih_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:fontFamily="sans-serif"
+                android:text="+1"
+                style="@style/JarvisButton" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/tasbih_target"
+                style="@style/JarvisTextUrdu" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/tasbih_target_33"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:text="33"
+                    style="@style/JarvisButton.Secondary" />
+
+                <Button
+                    android:id="@+id/tasbih_target_100"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/pad_small"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:text="100"
+                    style="@style/JarvisButton.Secondary" />
+
+                <Button
+                    android:id="@+id/tasbih_target_500"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/pad_small"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif"
+                    android:text="500"
+                    style="@style/JarvisButton.Secondary" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/tasbih_reset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/tasbih_reset"
+                style="@style/JarvisButton.Secondary" />
+        </LinearLayout>
+
+        <!-- Qibla -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/qibla_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/qibla_for_layyah"
+                style="@style/JarvisTextUrdu" />
+
+            <TextView
+                android:id="@+id/qibla_arrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:gravity="center"
+                android:text="↑"
+                android:textColor="@color/navy"
+                android:textSize="72sp"
+                style="@style/JarvisTextLatin" />
+
+            <TextView
+                android:id="@+id/qibla_bearing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                style="@style/JarvisTextLatin" />
+
+            <TextView
+                android:id="@+id/qibla_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:visibility="gone"
+                style="@style/JarvisTextUrdu" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

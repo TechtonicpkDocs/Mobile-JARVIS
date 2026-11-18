@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/pad_small"
+    android:background="@drawable/bg_card">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/kitab_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/JarvisTextUrdu" />
+
+        <TextView
+            android:id="@+id/kitab_item_meta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            style="@style/JarvisTextLatin.Small" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/kitab_item_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/pad_small"
+        style="@style/JarvisButton.Secondary"
+        android:text="@string/kitab_delete" />
+
+</LinearLayout>

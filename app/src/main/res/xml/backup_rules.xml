@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Never auto-back up the SQLite DB: a restored stale DB would run
+         untested migrations on open. The user has an explicit JSON backup
+         export/import in Settings instead. -->
+    <exclude domain="database" path="jarvis.db" />
+    <exclude domain="database" path="jarvis.db-journal" />
+    <exclude domain="database" path="jarvis.db-wal" />
+    <exclude domain="database" path="jarvis.db-shm" />
+</full-backup-content>

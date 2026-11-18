@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- W4: Settings strings (Urdu = default). Keys from w4-i18n.json minus
+         set_ttsvoice_* (W2 owns those), plus the W4 new keys (set_voice_*,
+         lock_*, prayer_alert_*, autobackup_*) and the small extras the
+         prayer receiver / lock screen / backup flow need.
+         NOT defined here: stop_button / stopped (W2), brief_prayer_* (W3),
+         nav_kitab (W5). -->
+    <string name="nav_bayan">بیان</string>
+    <string name="nav_briefing">صبح کا خلاصہ</string>
+    <string name="nav_chat">چیٹ</string>
+    <string name="nav_hisab">حساب</string>
+    <string name="nav_notes">نوٹس</string>
+    <string name="nav_settings">سیٹنگز</string>
+    <string name="set_about_line1">JARVIS موبائل — ورژن 1.0.0</string>
+    <string name="set_about_line2">محمد ریاض کھوڑ</string>
+    <string name="set_about_line3">TechtonicPK — لیہ، پاکستان</string>
+    <string name="set_about_title">تعارف</string>
+    <string name="set_backup_desc">اپنا تمام ڈیٹا ایک فائل میں محفوظ کریں، یا پرانی فائل سے بحال کریں۔</string>
+    <string name="set_backup_title">بیک اپ</string>
+    <string name="set_export">بیک اپ ڈاؤن لوڈ کریں</string>
+    <string name="set_export_failed">بیک اپ محفوظ نہیں ہو سکا</string>
+    <string name="set_export_ok">بیک اپ ڈاؤن لوڈ ہو گیا</string>
+    <string name="set_gemini_title">Gemini API</string>
+    <string name="set_hidekey">چھپائیں</string>
+    <string name="set_import">بیک اپ بحال کریں</string>
+    <string name="set_import_invalid">یہ درست بیک اپ فائل نہیں ہے</string>
+    <string name="set_import_label">بیک اپ فائل</string>
+    <string name="set_import_nofile">پہلے بیک اپ فائل منتخب کریں</string>
+    <string name="set_import_ok">بیک اپ بحال ہو گیا</string>
+    <string name="set_key_label">API کلید</string>
+    <string name="set_key_ph">اپنی Gemini API کلید یہاں لکھیں</string>
+    <string name="set_lang_en">English</string>
+    <string name="set_lang_label">زبان</string>
+    <string name="set_lang_ur">اردو</string>
+    <string name="set_langvoice_title">زبان اور آواز</string>
+    <string name="set_model_label">ماڈل</string>
+    <string name="set_model_ph">gemini-3.5-flash</string>
+    <string name="set_showkey">دکھائیں</string>
+    <string name="set_test_nogemini">چیٹ والا حصہ ابھی لوڈ نہیں ہوا</string>
+    <string name="set_test_nokey">پہلے API کلید لکھیں</string>
+    <string name="set_test_ok">کلید درست ہے — Gemini جواب دے رہا ہے</string>
+    <string name="set_testkey">کلید جانچیں</string>
+    <string name="set_title">سیٹنگز</string>
+    <string name="set_voice_label">آواز آن رکھیں</string>
+    <string name="set_voice_open">آواز منتخب کریں</string>
+    <string name="set_voice_summary">%1$s، رفتار %2$s</string>
+    <string name="set_voice_title">آواز کی سیٹنگز</string>
+    <string name="shell_subtitle">آپ کا ذاتی موبائل معاون</string>
+
+    <!-- App lock -->
+    <string name="lock_title">ایپ کا تالا</string>
+    <string name="lock_enable">ایپ پر تالا لگائیں</string>
+    <string name="lock_set_pin">پن سیٹ کریں</string>
+    <string name="lock_pin_hint">پن لکھیں (4 سے 8 ہندسے)</string>
+    <string name="lock_pin_repeat">پن دوبارہ لکھیں</string>
+    <string name="lock_pin_mismatch">دونوں پن ایک جیسے نہیں ہیں</string>
+    <string name="lock_pin_short">پن 4 سے 8 ہندسوں کا ہونا چاہیے</string>
+    <string name="lock_wrong_pin">غلط پن</string>
+    <string name="lock_biometric">فنگر پرنٹ سے کھولیں</string>
+    <string name="lock_disable">تالا ہٹائیں</string>
+    <string name="lock_disable_confirm">تالا ہٹانے کے لیے اپنا پن لکھیں</string>
+    <string name="lock_current_pin">اپنا موجودہ پن لکھیں</string>
+    <string name="lock_unlocked">تالا ہٹ گیا</string>
+    <string name="lock_unlock">کھولیں</string>
+
+    <!-- Prayer-time alerts -->
+    <string name="prayer_alert_title">نماز کے الرٹ</string>
+    <string name="prayer_alert_hint">جس نماز کا الرٹ چاہیے، اسے آن کریں — وقت پر اطلاع ملے گی۔</string>
+    <string name="prayer_alert_exact_unavailable">اس فون پر ٹھیک وقت کا الرٹ دستیاب نہیں — اطلاع تھوڑی دیر سے بھی آ سکتی ہے۔</string>
+    <string name="prayer_alert_now">%1$s کا وقت ہو گیا ہے</string>
+    <string name="prayer_alert_dismiss">ختم کریں</string>
+    <string name="prayer_alert_denied">اطلاع کی اجازت نہیں ملی — نماز الرٹ بند رہے گا</string>
+
+    <!-- Auto-backup -->
+    <string name="autobackup_title">خودکار بیک اپ</string>
+    <string name="autobackup_enable">ایپ بند کرتے وقت خودکار بیک اپ</string>
+    <string name="autobackup_choose">بیک اپ فائل منتخب کریں</string>
+    <string name="autobackup_chosen">فائل منتخب ہو گئی: %1$s</string>
+    <string name="autobackup_error">آخری خرابی: %1$s</string>
+</resources>

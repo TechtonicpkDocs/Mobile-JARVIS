@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/pad_large">
+
+    <TextView
+        android:id="@+id/voice_title_text"
+        style="@style/JarvisTextUrdu.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/voice_title" />
+
+    <TextView
+        android:id="@+id/voice_hint_text"
+        style="@style/JarvisTextUrdu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/voice_pick_hint" />
+
+    <TextView
+        android:id="@+id/voice_selected_text"
+        style="@style/JarvisTextLatin.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/set_ttsvoice_default" />
+
+    <TextView
+        android:id="@+id/voice_section_label"
+        style="@style/JarvisTextUrdu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_medium"
+        android:text="@string/set_ttsvoice_label" />
+
+    <TextView
+        android:id="@+id/voice_loading_text"
+        style="@style/JarvisTextUrdu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/set_ttsvoice_loading" />
+
+    <ListView
+        android:id="@+id/voice_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/pad_small"
+        android:divider="@color/divider"
+        android:dividerHeight="1dp" />
+
+    <TextView
+        android:id="@+id/voice_no_urdu_text"
+        style="@style/JarvisTextUrdu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/voice_no_urdu"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/voice_open_tts_button"
+        style="@style/JarvisButton.Secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/voice_open_tts_settings"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/voice_rate_label"
+        style="@style/JarvisTextUrdu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_medium"
+        android:text="@string/voice_rate" />
+
+    <SeekBar
+        android:id="@+id/voice_rate_seek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="150" />
+
+    <TextView
+        android:id="@+id/voice_pitch_label"
+        style="@style/JarvisTextUrdu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/voice_pitch" />
+
+    <SeekBar
+        android:id="@+id/voice_pitch_seek"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="150" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_medium"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/voice_preview_button"
+            style="@style/JarvisButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/voice_preview" />
+
+        <Button
+            android:id="@+id/voice_stop_button"
+            style="@style/JarvisButton.Stop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_small"
+            android:layout_weight="1"
+            android:text="@string/stop_button" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/voice_default_button"
+            style="@style/JarvisButton.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/set_ttsvoice_default" />
+
+        <Button
+            android:id="@+id/voice_back_button"
+            style="@style/JarvisButton.Secondary"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_small"
+            android:layout_weight="1"
+            android:text="@string/voice_back" />
+    </LinearLayout>
+
+</LinearLayout>

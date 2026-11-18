@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/pad_large">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/note_title"
+        style="@style/JarvisTextUrdu.Title" />
+
+    <!-- Quick-add chips: insert preset text into the composer, never auto-save. -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/note_chips_label"
+        style="@style/JarvisTextUrdu" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/note_chip_home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:minHeight="40dp"
+            android:text="@string/note_chip_home"
+            android:textSize="14sp"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/note_chip_shop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_small"
+            android:layout_weight="1"
+            android:minHeight="40dp"
+            android:text="@string/note_chip_shop"
+            android:textSize="14sp"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/note_chip_milk"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_small"
+            android:layout_weight="1"
+            android:minHeight="40dp"
+            android:text="@string/note_chip_milk"
+            android:textSize="14sp"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/note_chip_reminder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_small"
+            android:layout_weight="1"
+            android:minHeight="40dp"
+            android:text="@string/note_chip_reminder"
+            android:textSize="14sp"
+            style="@style/JarvisButton.Secondary" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/note_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_medium"
+        android:hint="@string/note_input_ph"
+        android:inputType="textMultiLine"
+        android:minLines="2"
+        style="@style/JarvisTextUrdu" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/note_date_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/note_date_label"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/note_time_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_small"
+            android:layout_weight="1"
+            android:text="@string/note_time_label"
+            style="@style/JarvisButton.Secondary" />
+
+        <Button
+            android:id="@+id/note_mic_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/pad_small"
+            android:layout_weight="1"
+            android:text="@string/chat_mic"
+            style="@style/JarvisButton.Secondary" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/note_add_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/note_add"
+        style="@style/JarvisButton" />
+
+    <TextView
+        android:id="@+id/note_listening"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/mic_listening"
+        android:visibility="gone"
+        style="@style/JarvisTextUrdu" />
+
+    <Button
+        android:id="@+id/note_mic_stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/voice_stop_listening"
+        android:visibility="gone"
+        style="@style/JarvisButton.Stop" />
+
+    <EditText
+        android:id="@+id/note_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_medium"
+        android:hint="@string/note_search_ph"
+        android:inputType="text"
+        style="@style/JarvisTextUrdu" />
+
+    <ListView
+        android:id="@+id/note_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/pad_small"
+        android:layout_weight="1"
+        android:divider="@color/divider"
+        android:dividerHeight="1dp" />
+
+    <TextView
+        android:id="@+id/note_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_small"
+        android:text="@string/note_empty"
+        android:visibility="gone"
+        style="@style/JarvisTextUrdu" />
+
+</LinearLayout>

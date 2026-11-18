@@ -1,0 +1,10 @@
+# Mobile JARVIS v1.0.0 — push to GitHub (Termux, one command per line)
+# Pehle GitHub app mein EMPTY repo bana lein, naam: Mobile-JARVIS (public ya private, aap ki marzi)
+# Phir source zip ko Download folder mein save kar ke neeche wali commands chalain
+cd ~
+git clone git@github.com:TechtonicpkDocs/Mobile-JARVIS.git
+cd Mobile-JARVIS
+unzip -o /storage/emulated/0/Download/mobile-jarvis-v1.0.0-source.zip
+git add -A
+git commit -m "Mobile JARVIS v1.0.0 native source"
+git push origin main

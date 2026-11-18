@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- W2 owns these keys. English. Identical key set in values. -->
+    <!-- set_ttsvoice_* converted from w4-i18n.json (HTML v1.0.0). -->
+    <string name="set_ttsvoice_default">Default voice</string>
+    <string name="set_ttsvoice_label">Voice for speech</string>
+    <string name="set_ttsvoice_loading">Loading voices…</string>
+    <string name="set_ttsvoice_none">No voice available</string>
+
+    <!-- Voice picker -->
+    <string name="voice_title">Choose a voice</string>
+    <string name="voice_pick_hint">Tap a voice — it will read out answers and books.</string>
+    <string name="voice_preview">Preview</string>
+    <string name="voice_preview_text">Hello, I am JARVIS</string>
+    <string name="voice_selected">Selected voice: %1$s</string>
+    <string name="voice_rate">Speed: %1$sx</string>
+    <string name="voice_pitch">Pitch: %1$sx</string>
+    <string name="voice_no_urdu">No Urdu voice is installed — download an Urdu voice from the system voice settings.</string>
+    <string name="voice_open_tts_settings">Open system voice settings</string>
+    <string name="voice_listening">Listening…</string>
+    <string name="voice_stop_listening">Stop listening</string>
+    <string name="voice_back">Back</string>
+    <string name="voice_disabled_hint">Voice is off — turn voice on in Settings first.</string>
+
+    <!-- Microphone permission + listening (shared by chat mic and voice notes) -->
+    <string name="mic_listening">Listening…</string>
+    <string name="mic_why_title">Microphone permission</string>
+    <string name="mic_why_body">The microphone is needed to talk by voice. Allow it and you can speak to JARVIS.</string>
+    <string name="mic_denied">Microphone permission was not given — voice chat will not work. You can allow it from Settings.</string>
+    <string name="mic_open_settings">Open Settings</string>
+    <string name="mic_no_recognizer">This phone has no speech recognition</string>
+    <string name="mic_allow">Allow</string>
+    <string name="mic_cancel">Cancel</string>
+
+    <!-- Shared stop keys (W2 OWNS these — W1/W3/W5 reference them) -->
+    <string name="stop_button">Stop</string>
+    <string name="stopped">Stopped</string>
+</resources>

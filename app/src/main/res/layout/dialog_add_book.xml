@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/pad_medium">
+
+        <EditText
+            android:id="@+id/kitab_add_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/JarvisTextUrdu"
+            android:hint="@string/kitab_add_title_hint"
+            android:inputType="text"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/kitab_add_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            android:minLines="6"
+            android:gravity="top"
+            style="@style/JarvisTextUrdu"
+            android:hint="@string/kitab_add_text_hint"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/kitab_add_upload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            style="@style/JarvisButton.Secondary"
+            android:text="@string/kitab_upload" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_small"
+            style="@style/JarvisTextUrdu"
+            android:text="@string/kitab_pdf_note" />
+
+        <Button
+            android:id="@+id/kitab_add_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            style="@style/JarvisButton"
+            android:text="@string/kitab_add" />
+
+    </LinearLayout>
+
+</ScrollView>

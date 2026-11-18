@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JARVIS</string>
+    <string name="footer_text">powered by TECHTONICPK (03200989317)</string>
+    <string name="exit_confirm">کیا آپ JARVIS بند کرنا چاہتے ہیں؟</string>
+    <string name="yes">جی ہاں</string>
+    <string name="no">نہیں</string>
+    <string name="ok">ٹھیک ہے</string>
+    <string name="cancel">منسوخ کریں</string>
+    <string name="channel_reminders">یاددہانی</string>
+    <string name="channel_prayers">نماز کے اوقات</string>
+    <string name="channel_playback">کتاب سننا</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_kitab">کتاب</string>
+    <string name="kitab_title">کتاب</string>
+    <string name="kitab_library">لائبریری</string>
+    <string name="kitab_add">کتاب شامل کریں</string>
+    <string name="kitab_add_title_hint">کتاب کا نام</string>
+    <string name="kitab_add_text_hint">کتاب کا متن یہاں لکھیں یا چسپاں کریں</string>
+    <string name="kitab_upload">فائل سے لگائیں (.txt / .md)</string>
+    <string name="kitab_pdf_note">PDF کا متن صاف نہیں نکلتا — text paste کریں</string>
+    <string name="kitab_play">چلائیں</string>
+    <string name="kitab_pause">روکیں</string>
+    <string name="kitab_resume">جاری رکھیں</string>
+    <string name="kitab_stop">بند کریں</string>
+    <string name="kitab_chunk_of">حصہ %1$d از %2$d</string>
+    <string name="kitab_progress">پیش رفت %1$d%%</string>
+    <string name="kitab_words">%1$d الفاظ</string>
+    <string name="kitab_last_read">آخری مطالعہ: %1$s</string>
+    <string name="kitab_delete">حذف کریں</string>
+    <string name="kitab_delete_confirm">کیا آپ "%1$s" حذف کرنا چاہتے ہیں؟</string>
+    <string name="kitab_deleted">کتاب حذف ہو گئی</string>
+    <string name="kitab_added">کتاب شامل ہو گئی</string>
+    <string name="kitab_empty">ابھی کوئی کتاب نہیں ہے</string>
+    <string name="kitab_loading">کتابیں تیار ہو رہی ہیں…</string>
+    <string name="kitab_speed">رفتار</string>
+    <string name="kitab_battery_title">بیٹری کی ترتیب</string>
+    <string name="kitab_battery_body">Vivo کی بیٹری بچت آواز کو پس منظر میں روک سکتی ہے۔ کتاب سنتے وقت آواز جاری رکھنے کے لیے JARVIS کو بیٹری کی پابندی سے آزاد کریں۔</string>
+    <string name="kitab_battery_open">ترتیبات کھولیں</string>
+    <string name="kitab_battery_later">بعد میں</string>
+    <string name="kitab_no_book">کوئی کتاب منتخب نہیں ہے</string>
+    <string name="kitab_voice_off">آواز بند ہے — ترتیبات میں آواز چالو کریں</string>
+</resources>

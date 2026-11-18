@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/pad_large">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hisab_title"
+            style="@style/JarvisTextUrdu.Title" />
+
+        <!-- Calculator -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hisab_calc_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <EditText
+                android:id="@+id/calc_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:inputType="text"
+                style="@style/JarvisTextLatin" />
+
+            <Button
+                android:id="@+id/calc_eval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:fontFamily="sans-serif"
+                android:text="="
+                style="@style/JarvisButton" />
+
+            <TextView
+                android:id="@+id/calc_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="0"
+                style="@style/JarvisTextLatin" />
+        </LinearLayout>
+
+        <!-- Milk sale hisab -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hisab_milk_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_milk_litres"
+                style="@style/JarvisTextUrdu" />
+
+            <EditText
+                android:id="@+id/milk_litres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hisab_milk_litres_ph"
+                android:inputType="numberDecimal"
+                style="@style/JarvisTextLatin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_milk_rate"
+                style="@style/JarvisTextUrdu" />
+
+            <EditText
+                android:id="@+id/milk_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hisab_milk_rate_ph"
+                android:inputType="numberDecimal"
+                style="@style/JarvisTextLatin" />
+
+            <Button
+                android:id="@+id/milk_calc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_milk_calc"
+                style="@style/JarvisButton" />
+
+            <TextView
+                android:id="@+id/milk_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_milk_result_empty"
+                style="@style/JarvisTextLatin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/hisab_milk_saved"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <LinearLayout
+                android:id="@+id/milk_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/milk_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                style="@style/JarvisTextLatin" />
+
+            <Button
+                android:id="@+id/milk_clear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_milk_clear"
+                style="@style/JarvisButton.Secondary" />
+        </LinearLayout>
+
+        <!-- Unit converter -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_medium"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_medium">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/hisab_conv_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_conv_value"
+                style="@style/JarvisTextUrdu" />
+
+            <EditText
+                android:id="@+id/conv_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hisab_conv_value_ph"
+                android:inputType="numberDecimal"
+                style="@style/JarvisTextLatin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_conv_from"
+                style="@style/JarvisTextUrdu" />
+
+            <Spinner
+                android:id="@+id/conv_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_conv_to"
+                style="@style/JarvisTextUrdu" />
+
+            <Spinner
+                android:id="@+id/conv_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/conv_calc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_milk_calc"
+                style="@style/JarvisButton" />
+
+            <TextView
+                android:id="@+id/conv_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/hisab_conv_result_empty"
+                style="@style/JarvisTextLatin" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

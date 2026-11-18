@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chat strings (Urdu = default). Converted from w1-i18n.json.
+     stop_button / stopped are OWNED BY W2 — not defined here. -->
+<resources>
+    <string name="chat_api_error">Gemini سے جواب نہیں ملا</string>
+    <string name="chat_clear">صاف کریں</string>
+    <string name="chat_clear_confirm">کیا آپ ساری چیٹ صاف کرنا چاہتے ہیں؟</string>
+    <string name="chat_cleared">چیٹ صاف ہو گئی</string>
+    <string name="chat_copied">کاپی ہو گیا</string>
+    <string name="chat_copy">کاپی</string>
+    <string name="chat_copy_failed">کاپی نہیں ہوا</string>
+    <string name="chat_empty_reply">Gemini نے خالی جواب دیا</string>
+    <string name="chat_empty_text">اپنا سوال یہاں لکھیں یا مائیک دبا کر بولیں۔</string>
+    <string name="chat_empty_title">TECHTONICPK AI</string>
+    <string name="chat_input_placeholder">اپنا سوال لکھیں</string>
+    <string name="chat_mic">مائیک</string>
+    <string name="chat_no_key">Gemini کی API key سیٹنگز میں شامل نہیں ہے۔ پہلے سیٹنگز میں اپنی key لگائیں۔</string>
+    <string name="chat_search_placeholder">چیٹ میں تلاش کریں</string>
+    <string name="chat_send">بھیجیں</string>
+    <string name="chat_send_failed">پیغام بھیجنے میں مسئلہ ہوا</string>
+    <string name="chat_share_whatsapp">واٹس ایپ</string>
+    <string name="chat_typing">جواب لکھا جا رہا ہے</string>
+    <string name="chat_voice_failed">آواز سمجھ نہیں آئی، دوبارہ کوشش کریں</string>
+    <string name="chat_voice_unsupported">اس فون پر آواز کی شناخت دستیاب نہیں ہے</string>
+    <string name="chat_stopped">جواب روک دیا گیا</string>
+    <string name="chat_speak">سنائیں</string>
+    <string name="chat_stop_speaking">بولنا بند کریں</string>
+    <string name="chat_server_busy">Gemini کا سرور مصروف ہے، تھوڑی دیر بعد دوبارہ کوشش کریں</string>
+    <string name="chat_fallback_used">جواب ہلکے ماڈل سے آیا ہے</string>
+    <string name="chat_offline">انٹرنیٹ نہیں چل رہا — کنکشن چیک کریں</string>
+    <string name="chat_error">درخواست مسترد ہو گئی — سیٹنگز میں اپنی Gemini key چیک کریں</string>
+</resources>

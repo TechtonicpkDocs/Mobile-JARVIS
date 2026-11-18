@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- W4: Settings strings (English). Identical key set to
+         res/values/strings_settings.xml. See that file for the ownership
+         notes. -->
+    <string name="nav_bayan">Bayan</string>
+    <string name="nav_briefing">Briefing</string>
+    <string name="nav_chat">Chat</string>
+    <string name="nav_hisab">Hisab</string>
+    <string name="nav_notes">Notes</string>
+    <string name="nav_settings">Settings</string>
+    <string name="set_about_line1">JARVIS Mobile — Version 1.0.0</string>
+    <string name="set_about_line2">Muhammad Riaz Khour</string>
+    <string name="set_about_line3">TechtonicPK — Layyah, Pakistan</string>
+    <string name="set_about_title">About</string>
+    <string name="set_backup_desc">Save all your data to one file, or restore from an earlier file.</string>
+    <string name="set_backup_title">Backup</string>
+    <string name="set_export">Download backup</string>
+    <string name="set_export_failed">Backup could not be saved</string>
+    <string name="set_export_ok">Backup downloaded</string>
+    <string name="set_gemini_title">Gemini API</string>
+    <string name="set_hidekey">Hide</string>
+    <string name="set_import">Restore backup</string>
+    <string name="set_import_invalid">This is not a valid backup file</string>
+    <string name="set_import_label">Backup file</string>
+    <string name="set_import_nofile">Choose a backup file first</string>
+    <string name="set_import_ok">Backup restored</string>
+    <string name="set_key_label">API key</string>
+    <string name="set_key_ph">Paste your Gemini API key here</string>
+    <string name="set_lang_en">English</string>
+    <string name="set_lang_label">Language</string>
+    <string name="set_lang_ur">Urdu</string>
+    <string name="set_langvoice_title">Language and voice</string>
+    <string name="set_model_label">Model</string>
+    <string name="set_model_ph">gemini-3.5-flash</string>
+    <string name="set_showkey">Show</string>
+    <string name="set_test_nogemini">Chat module is not loaded yet</string>
+    <string name="set_test_nokey">Enter an API key first</string>
+    <string name="set_test_ok">Key works — Gemini responded</string>
+    <string name="set_testkey">Test key</string>
+    <string name="set_title">Settings</string>
+    <string name="set_voice_label">Voice on</string>
+    <string name="set_voice_open">Choose voice</string>
+    <string name="set_voice_summary">%1$s, rate %2$s</string>
+    <string name="set_voice_title">Voice settings</string>
+    <string name="shell_subtitle">Your personal mobile assistant</string>
+
+    <!-- App lock -->
+    <string name="lock_title">App lock</string>
+    <string name="lock_enable">Lock the app</string>
+    <string name="lock_set_pin">Set PIN</string>
+    <string name="lock_pin_hint">Enter PIN (4–8 digits)</string>
+    <string name="lock_pin_repeat">Repeat PIN</string>
+    <string name="lock_pin_mismatch">The two PINs do not match</string>
+    <string name="lock_pin_short">PIN must be 4–8 digits</string>
+    <string name="lock_wrong_pin">Wrong PIN</string>
+    <string name="lock_biometric">Unlock with fingerprint</string>
+    <string name="lock_disable">Remove lock</string>
+    <string name="lock_disable_confirm">Enter your PIN to remove the lock</string>
+    <string name="lock_current_pin">Enter your current PIN</string>
+    <string name="lock_unlocked">Lock removed</string>
+    <string name="lock_unlock">Unlock</string>
+
+    <!-- Prayer-time alerts -->
+    <string name="prayer_alert_title">Prayer alerts</string>
+    <string name="prayer_alert_hint">Turn on the prayers you want to be reminded of at their time.</string>
+    <string name="prayer_alert_exact_unavailable">Exact-time alarms are not available on this phone — an alert may arrive a little late.</string>
+    <string name="prayer_alert_now">It is time for %1$s</string>
+    <string name="prayer_alert_dismiss">Dismiss</string>
+    <string name="prayer_alert_denied">Notification permission denied — prayer alert stays off</string>
+
+    <!-- Auto-backup -->
+    <string name="autobackup_title">Auto-backup</string>
+    <string name="autobackup_enable">Back up automatically when the app closes</string>
+    <string name="autobackup_choose">Choose backup file</string>
+    <string name="autobackup_chosen">File chosen: %1$s</string>
+    <string name="autobackup_error">Last error: %1$s</string>
+</resources>

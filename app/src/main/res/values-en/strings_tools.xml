@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- W3 owns these keys. English. Identical key set in values. -->
+
+    <!-- Morning Briefing -->
+    <string name="brief_bayan_open">Search today\'s scholar on YouTube</string>
+    <string name="brief_bayan_title">Today\'s Bayan</string>
+    <string name="brief_bayan_today">Today\'s scholar: {scholar} — search on YouTube</string>
+    <string name="brief_date_title">Date</string>
+    <string name="brief_done">Briefing is ready.</string>
+    <string name="brief_err_offline">No internet — weather and prayer times could not be loaded</string>
+    <string name="brief_err_prayers">Prayer times could not be loaded.</string>
+    <string name="brief_err_weather">Weather information could not be loaded.</string>
+    <string name="brief_generate">Generate Briefing</string>
+    <string name="brief_generate_first">Generate the briefing first.</string>
+    <string name="brief_hijri_suffix">AH</string>
+    <string name="brief_humidity">Humidity</string>
+    <string name="brief_intro">Today\'s date, Layyah weather, prayer times and your notes — in one place.</string>
+    <string name="brief_loading">Preparing the briefing…</string>
+    <string name="brief_no_notes">No notes yet.</string>
+    <string name="brief_notes_count">You have {n} notes.</string>
+    <string name="brief_notes_title">Notes</string>
+    <string name="brief_partial">Briefing is partly ready — some information could not be loaded.</string>
+    <string name="brief_pinned">Pinned</string>
+    <string name="brief_prayer_asr">Asr</string>
+    <string name="brief_prayer_dhuhr">Dhuhr</string>
+    <string name="brief_prayer_fajr">Fajr</string>
+    <string name="brief_prayer_isha">Isha</string>
+    <string name="brief_prayer_maghrib">Maghrib</string>
+    <string name="brief_prayer_sunrise">Sunrise</string>
+    <string name="brief_prayers_title">Prayer Times — Layyah</string>
+    <string name="brief_speak">Speak Briefing</string>
+    <string name="brief_speak_no_notes">There are no notes today</string>
+    <string name="brief_speak_notes">You have {n} notes</string>
+    <string name="brief_speak_prayer">The next prayer is {name} at {time}</string>
+    <string name="brief_speak_unavailable">Voice is not available.</string>
+    <string name="brief_speak_weather">The weather is {label}, temperature {temp} degrees Celsius</string>
+    <string name="brief_speaking">Speaking the briefing…</string>
+    <string name="brief_status_idle">Tap the button above to prepare the briefing.</string>
+    <string name="brief_stop">Stop</string>
+    <string name="brief_stop_speaking">Stop speaking</string>
+    <string name="brief_stopped">Briefing stopped.</string>
+    <string name="brief_temp">Temperature</string>
+    <string name="brief_title">Morning Briefing</string>
+    <string name="brief_today">Today</string>
+    <string name="brief_today_notes">Today\'s notes</string>
+    <string name="brief_weather_title">Weather — Layyah</string>
+    <string name="brief_wind">Wind speed</string>
+    <string name="brief_wx_clear">Clear</string>
+    <string name="brief_wx_fog">Fog</string>
+    <string name="brief_wx_partly">Partly cloudy</string>
+    <string name="brief_wx_rain">Rain</string>
+    <string name="brief_wx_snow">Snow</string>
+    <string name="brief_wx_storm">Thunderstorm</string>
+    <string name="brief_wx_unknown">Weather information</string>
+
+    <!-- Bayan scholars -->
+    <string name="bayan_intro">Tap your favourite scholar\'s name — their latest bayan will be searched on YouTube.</string>
+    <string name="bayan_scholar_ajmal">Pir Ajmal Raza Qadri</string>
+    <string name="bayan_scholar_habib">Maulana Abdul Habib Attari</string>
+    <string name="bayan_scholar_imran">Maulana Muhammad Imran Attari</string>
+    <string name="bayan_scholar_salman">Mufti Salman Azhari</string>
+    <string name="bayan_scholar_samar">Mufti Muhammad Samar Abbas Attari</string>
+    <string name="bayan_scholar_saqib">Muhammad Raza Saqib Mustafai</string>
+    <string name="bayan_search_yt">Search latest bayan on YouTube</string>
+    <string name="bayan_title">Bayan</string>
+
+    <!-- Hisab tools -->
+    <string name="hisab_calc_div_zero">Cannot divide by zero</string>
+    <string name="hisab_calc_error">Invalid calculation</string>
+    <string name="hisab_calc_title">Calculator</string>
+    <string name="hisab_conv_from">From</string>
+    <string name="hisab_conv_invalid">Enter a valid value</string>
+    <string name="hisab_conv_mismatch">Weight and length cannot be converted into each other</string>
+    <string name="hisab_conv_result_empty">Enter a value and select units</string>
+    <string name="hisab_conv_title">Unit Converter</string>
+    <string name="hisab_conv_to">To</string>
+    <string name="hisab_conv_value">Value</string>
+    <string name="hisab_conv_value_ph">Enter value</string>
+    <string name="hisab_currency">Rs</string>
+    <string name="hisab_milk_calc">Calculate</string>
+    <string name="hisab_milk_clear">Clear all</string>
+    <string name="hisab_milk_clear_confirm">Clear all milk entries?</string>
+    <string name="hisab_milk_cleared">All entries cleared</string>
+    <string name="hisab_milk_empty">No entries yet</string>
+    <string name="hisab_milk_invalid">Enter valid litres and rate</string>
+    <string name="hisab_milk_litres">Litres</string>
+    <string name="hisab_milk_litres_ph">Enter litres</string>
+    <string name="hisab_milk_rate">Rate per litre (Rs)</string>
+    <string name="hisab_milk_rate_ph">Enter rate</string>
+    <string name="hisab_milk_result_empty">Enter litres and rate, then calculate</string>
+    <string name="hisab_milk_saved">Saved entries</string>
+    <string name="hisab_milk_saved_msg">Entry saved</string>
+    <string name="hisab_milk_title">Milk Sale Hisab</string>
+    <string name="hisab_milk_total">Running total</string>
+    <string name="hisab_title">Hisab Tools</string>
+    <string name="hisab_unit_gaz">Gaz</string>
+    <string name="hisab_unit_kg">Kilogram (kg)</string>
+    <string name="hisab_unit_maund">Maund</string>
+    <string name="hisab_unit_metre">Metre</string>
+    <string name="hisab_unit_yard">Yard</string>
+
+    <!-- Notes -->
+    <string name="note_add">Add</string>
+    <string name="note_added">Note saved</string>
+    <string name="note_chip_home">Home work</string>
+    <string name="note_chip_milk">Milk account</string>
+    <string name="note_chip_reminder">Reminder</string>
+    <string name="note_chip_shop">Shop work</string>
+    <string name="note_chips_label">Quick add</string>
+    <string name="note_date_label">Date (optional)</string>
+    <string name="note_delete">Delete</string>
+    <string name="note_delete_confirm">Delete this note?</string>
+    <string name="note_deleted">Note deleted</string>
+    <string name="note_empty">No notes yet</string>
+    <string name="note_empty_text">Write a note first</string>
+    <string name="note_input_ph">Write a new note...</string>
+    <string name="note_no_result">No note matches this search</string>
+    <string name="note_pin">Pin</string>
+    <string name="note_search_ph">Search notes...</string>
+    <string name="note_time_label">Time (optional)</string>
+    <string name="note_title">Notes &amp; Reminders</string>
+    <string name="note_today">Today</string>
+    <string name="note_unpin">Unpin</string>
+
+    <!-- Reminder alerts -->
+    <string name="reminder_dismiss">Dismiss</string>
+    <string name="reminder_no_permission">Notification permission not given — reminder was not set</string>
+    <string name="reminder_past">That time has passed — no reminder was set</string>
+    <string name="reminder_set">Reminder set</string>
+    <string name="reminder_title">Reminder</string>
+
+    <!-- Tasbih -->
+    <string name="tasbih_reached">Target reached</string>
+    <string name="tasbih_reset">Reset count for today</string>
+    <string name="tasbih_reset_confirm">Reset the tasbih count for today to zero?</string>
+    <string name="tasbih_target">Target</string>
+    <string name="tasbih_title">Tasbih</string>
+
+    <!-- Qibla -->
+    <string name="qibla_for_layyah">Qibla direction — for Layyah</string>
+    <string name="qibla_no_sensor">This phone has no compass sensor</string>
+    <string name="qibla_title">Qibla</string>
+
+    <!-- Voice notes -->
+    <string name="voice_note_saved">Voice note saved: {text}</string>
+</resources>

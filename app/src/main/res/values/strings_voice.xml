@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- W2 owns these keys. Urdu = default. Identical key set in values-en. -->
+    <!-- set_ttsvoice_* converted from w4-i18n.json (HTML v1.0.0). -->
+    <string name="set_ttsvoice_default">ڈیفالٹ آواز</string>
+    <string name="set_ttsvoice_label">بولنے والی آواز</string>
+    <string name="set_ttsvoice_loading">آوازیں لوڈ ہو رہی ہیں…</string>
+    <string name="set_ttsvoice_none">کوئی آواز دستیاب نہیں</string>
+
+    <!-- Voice picker -->
+    <string name="voice_title">آواز منتخب کریں</string>
+    <string name="voice_pick_hint">آواز پر ٹیپ کریں — وہی آواز جوابات اور کتاب سنائے گی۔</string>
+    <string name="voice_preview">سن کر دیکھیں</string>
+    <string name="voice_preview_text">السلام علیکم، میں جارویس ہوں</string>
+    <string name="voice_selected">منتخب آواز: %1$s</string>
+    <string name="voice_rate">رفتار: %1$sx</string>
+    <string name="voice_pitch">آواز کی بلندی: %1$sx</string>
+    <string name="voice_no_urdu">اردو آواز نصب نہیں ہے — سسٹم کی آوازوں میں سے اردو آواز ڈاؤن لوڈ کریں۔</string>
+    <string name="voice_open_tts_settings">سسٹم آواز کی سیٹنگز کھولیں</string>
+    <string name="voice_listening">سن رہا ہوں…</string>
+    <string name="voice_stop_listening">سننا بند کریں</string>
+    <string name="voice_back">واپس</string>
+    <string name="voice_disabled_hint">آواز بند ہے — پہلے سیٹنگز میں آواز آن کریں۔</string>
+
+    <!-- Microphone permission + listening (shared by chat mic and voice notes) -->
+    <string name="mic_listening">سن رہا ہوں…</string>
+    <string name="mic_why_title">مائیک کی اجازت</string>
+    <string name="mic_why_body">بول کر بات کرنے کے لیے مائیک کی ضرورت ہے۔ اجازت دیں تو آپ بول کر جارویس سے بات کر سکیں گے۔</string>
+    <string name="mic_denied">مائیک کی اجازت نہیں ملی — بول کر بات نہیں ہو سکے گی۔ سیٹنگز سے اجازت دی جا سکتی ہے۔</string>
+    <string name="mic_open_settings">سیٹنگز کھولیں</string>
+    <string name="mic_no_recognizer">اس فون میں آواز پہچاننے کا نظام نہیں ہے</string>
+    <string name="mic_allow">اجازت دیں</string>
+    <string name="mic_cancel">منسوخ کریں</string>
+
+    <!-- Shared stop keys (W2 OWNS these — W1/W3/W5 reference them) -->
+    <string name="stop_button">روکیں</string>
+    <string name="stopped">رک گیا</string>
+</resources>

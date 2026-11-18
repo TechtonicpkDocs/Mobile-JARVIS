@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/pad_medium">
+
+    <!-- Search + clear row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/chat_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/chat_search_placeholder"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/chat_clear"
+            style="@style/JarvisButton.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chat_clear" />
+    </LinearLayout>
+
+    <!-- Chat history -->
+    <ListView
+        android:id="@+id/chat_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+    <!-- Empty state (shown only when the history is empty) -->
+    <LinearLayout
+        android:id="@+id/chat_empty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/chat_empty_title"
+            style="@style/JarvisTextUrdu.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chat_empty_title" />
+
+        <TextView
+            android:id="@+id/chat_empty_text"
+            style="@style/JarvisTextUrdu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/chat_empty_text" />
+    </LinearLayout>
+
+    <!-- Typing indicator (visible while a reply is in flight) -->
+    <TextView
+        android:id="@+id/chat_typing"
+        style="@style/JarvisTextUrdu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/chat_typing"
+        android:visibility="gone" />
+
+    <!-- Listening indicator (visible while the mic is on) -->
+    <TextView
+        android:id="@+id/chat_mic_listening"
+        style="@style/JarvisTextUrdu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mic_listening"
+        android:visibility="gone" />
+
+    <!-- Input row: typed input is ALWAYS visible next to the mic -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/chat_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/chat_input_placeholder"
+            android:inputType="textMultiLine|textCapSentences"
+            android:maxLines="4"
+            android:minHeight="48dp" />
+
+        <Button
+            android:id="@+id/chat_mic"
+            style="@style/JarvisButton.Secondary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chat_mic" />
+
+        <Button
+            android:id="@+id/chat_send"
+            style="@style/JarvisButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chat_send" />
+    </LinearLayout>
+
+    <!-- STOP (shared stop contract): visible while a request is in flight
+         or while listening; halts NOW, never retries. -->
+    <Button
+        android:id="@+id/chat_stop"
+        style="@style/JarvisButton.Stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/stop_button"
+        android:visibility="gone" />
+
+</LinearLayout>

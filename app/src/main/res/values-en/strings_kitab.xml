@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_kitab">Kitab</string>
+    <string name="kitab_title">Kitab</string>
+    <string name="kitab_library">Library</string>
+    <string name="kitab_add">Add book</string>
+    <string name="kitab_add_title_hint">Book title</string>
+    <string name="kitab_add_text_hint">Write or paste the book text here</string>
+    <string name="kitab_upload">Upload a file (.txt / .md)</string>
+    <string name="kitab_pdf_note">PDF text does not come out clean — please paste text instead</string>
+    <string name="kitab_play">Play</string>
+    <string name="kitab_pause">Pause</string>
+    <string name="kitab_resume">Resume</string>
+    <string name="kitab_stop">Stop</string>
+    <string name="kitab_chunk_of">Part %1$d of %2$d</string>
+    <string name="kitab_progress">Progress %1$d%%</string>
+    <string name="kitab_words">%1$d words</string>
+    <string name="kitab_last_read">Last read: %1$s</string>
+    <string name="kitab_delete">Delete</string>
+    <string name="kitab_delete_confirm">Delete "%1$s"?</string>
+    <string name="kitab_deleted">Book deleted</string>
+    <string name="kitab_added">Book added</string>
+    <string name="kitab_empty">No books yet</string>
+    <string name="kitab_loading">Loading books…</string>
+    <string name="kitab_speed">Speed</string>
+    <string name="kitab_battery_title">Battery setting</string>
+    <string name="kitab_battery_body">Vivo battery saving can stop the voice in the background. Allow JARVIS to ignore battery optimization so the book keeps playing.</string>
+    <string name="kitab_battery_open">Open settings</string>
+    <string name="kitab_battery_later">Later</string>
+    <string name="kitab_no_book">No book selected</string>
+    <string name="kitab_voice_off">Voice is off — turn voice on in Settings</string>
+</resources>

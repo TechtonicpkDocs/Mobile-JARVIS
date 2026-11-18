@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Platform Material theme (no AppCompat dependency by design).
+         Default font stays sans: Jameel Noori Nastaleeq renders Latin at
+         about half size, so it is applied ONLY to Urdu text via the
+         JarvisTextUrdu style. Numbers, times and Latin text stay sans. -->
+    <style name="Theme.Jarvis" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:colorPrimary">@color/navy</item>
+        <item name="android:colorPrimaryDark">@color/navy_dark</item>
+        <item name="android:colorAccent">@color/gold</item>
+        <item name="android:windowBackground">@color/paper</item>
+        <item name="android:textColorPrimary">@color/ink</item>
+        <item name="android:textColorSecondary">@color/ink_soft</item>
+    </style>
+
+    <!-- Urdu body text: Jameel Noori Nastaleeq, embedded. -->
+    <style name="JarvisTextUrdu">
+        <item name="android:fontFamily">@font/jameel_noori_nastaleeq</item>
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+    </style>
+
+    <!-- Urdu title text. -->
+    <style name="JarvisTextUrdu.Title">
+        <item name="android:fontFamily">@font/jameel_noori_nastaleeq</item>
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textColor">@color/navy</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Latin / numbers text: system sans, never Jameel. -->
+    <style name="JarvisTextLatin">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/text_body</item>
+        <item name="android:textColor">@color/ink</item>
+    </style>
+
+    <style name="JarvisTextLatin.Small">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColor">@color/ink_soft</item>
+    </style>
+
+    <!-- Primary action button (navy). -->
+    <style name="JarvisButton" parent="android:Widget.Material.Button">
+        <item name="android:background">@drawable/bg_button_navy</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/jameel_noori_nastaleeq</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingStart">18dp</item>
+        <item name="android:paddingEnd">18dp</item>
+    </style>
+
+    <!-- Stop button (red, always visible while an operation runs). -->
+    <style name="JarvisButton.Stop" parent="android:Widget.Material.Button">
+        <item name="android:background">@drawable/bg_button_red</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/jameel_noori_nastaleeq</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingStart">18dp</item>
+        <item name="android:paddingEnd">18dp</item>
+    </style>
+
+    <!-- Secondary button (gold outline look via light background). -->
+    <style name="JarvisButton.Secondary" parent="android:Widget.Material.Button">
+        <item name="android:background">@drawable/bg_button_gold</item>
+        <item name="android:textColor">@color/navy_dark</item>
+        <item name="android:fontFamily">@font/jameel_noori_nastaleeq</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+
+    <!-- Bottom navigation tab button. -->
+    <style name="JarvisNavButton" parent="android:Widget.Material.Button.Borderless">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/jameel_noori_nastaleeq</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingEnd">2dp</item>
+    </style>
+</resources>

@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/pad_large">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/set_title"
+            style="@style/JarvisTextUrdu.Title" />
+
+        <!-- (1) Gemini -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_large"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_gemini_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/set_key_label"
+                style="@style/JarvisTextUrdu" />
+
+            <EditText
+                android:id="@+id/set_key"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/set_key_ph"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                style="@style/JarvisTextLatin" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/set_togglekey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/set_showkey"
+                    style="@style/JarvisButton.Secondary" />
+
+                <Button
+                    android:id="@+id/set_testkey"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/pad_small"
+                    android:text="@string/set_testkey"
+                    style="@style/JarvisButton" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/set_test_stop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/stop_button"
+                android:visibility="gone"
+                style="@style/JarvisButton.Stop" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/set_model_label"
+                style="@style/JarvisTextUrdu" />
+
+            <EditText
+                android:id="@+id/set_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/set_model_ph"
+                android:inputType="text"
+                android:maxLines="1"
+                style="@style/JarvisTextLatin" />
+        </LinearLayout>
+
+        <!-- (2) Language + (3) Voice -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_large"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_langvoice_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/set_lang_label"
+                style="@style/JarvisTextUrdu" />
+
+            <RadioGroup
+                android:id="@+id/set_lang_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/set_lang_ur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/set_lang_ur"
+                    style="@style/JarvisTextUrdu" />
+
+                <RadioButton
+                    android:id="@+id/set_lang_en"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/pad_large"
+                    android:text="@string/set_lang_en"
+                    style="@style/JarvisTextUrdu" />
+            </RadioGroup>
+
+            <Switch
+                android:id="@+id/set_voice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/set_voice_label"
+                style="@style/JarvisTextUrdu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/set_voice_title"
+                style="@style/JarvisTextUrdu" />
+
+            <Button
+                android:id="@+id/set_voice_open"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/set_voice_open"
+                style="@style/JarvisButton.Secondary" />
+
+            <TextView
+                android:id="@+id/set_voice_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                style="@style/JarvisTextLatin.Small" />
+        </LinearLayout>
+
+        <!-- (4) Backup -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_large"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_backup_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/set_backup_desc"
+                style="@style/JarvisTextUrdu" />
+
+            <Button
+                android:id="@+id/set_export"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/set_export"
+                style="@style/JarvisButton" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/set_import_label"
+                style="@style/JarvisTextUrdu" />
+
+            <Button
+                android:id="@+id/set_import"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/set_import"
+                style="@style/JarvisButton.Secondary" />
+        </LinearLayout>
+
+        <!-- (5) Auto-backup -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_large"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/autobackup_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <Switch
+                android:id="@+id/autobackup_enable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/autobackup_enable"
+                style="@style/JarvisTextUrdu" />
+
+            <Button
+                android:id="@+id/autobackup_choose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/autobackup_choose"
+                style="@style/JarvisButton.Secondary" />
+
+            <TextView
+                android:id="@+id/autobackup_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:visibility="gone"
+                style="@style/JarvisTextLatin.Small" />
+        </LinearLayout>
+
+        <!-- (6) Prayer alerts -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_large"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prayer_alert_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/prayer_alert_hint"
+                style="@style/JarvisTextUrdu" />
+
+            <Switch
+                android:id="@+id/sw_prayer_fajr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/brief_prayer_fajr"
+                style="@style/JarvisTextUrdu" />
+
+            <Switch
+                android:id="@+id/sw_prayer_sunrise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_prayer_sunrise"
+                style="@style/JarvisTextUrdu" />
+
+            <Switch
+                android:id="@+id/sw_prayer_dhuhr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_prayer_dhuhr"
+                style="@style/JarvisTextUrdu" />
+
+            <Switch
+                android:id="@+id/sw_prayer_asr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_prayer_asr"
+                style="@style/JarvisTextUrdu" />
+
+            <Switch
+                android:id="@+id/sw_prayer_maghrib"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_prayer_maghrib"
+                style="@style/JarvisTextUrdu" />
+
+            <Switch
+                android:id="@+id/sw_prayer_isha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/brief_prayer_isha"
+                style="@style/JarvisTextUrdu" />
+
+            <TextView
+                android:id="@+id/prayer_alert_exact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/prayer_alert_exact_unavailable"
+                android:textColor="@color/danger"
+                android:visibility="gone"
+                style="@style/JarvisTextUrdu" />
+        </LinearLayout>
+
+        <!-- (7) App lock -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_large"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lock_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <Switch
+                android:id="@+id/lock_enable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_medium"
+                android:text="@string/lock_enable"
+                style="@style/JarvisTextUrdu" />
+
+            <Button
+                android:id="@+id/lock_set_pin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/lock_set_pin"
+                style="@style/JarvisButton.Secondary" />
+
+            <Switch
+                android:id="@+id/lock_biometric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/lock_biometric"
+                android:visibility="gone"
+                style="@style/JarvisTextUrdu" />
+        </LinearLayout>
+
+        <!-- (8) About -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/pad_large"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="@dimen/pad_large">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_about_title"
+                style="@style/JarvisTextUrdu.Title" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad_small"
+                android:text="@string/set_about_line1"
+                style="@style/JarvisTextLatin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_about_line2"
+                style="@style/JarvisTextUrdu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/set_about_line3"
+                style="@style/JarvisTextLatin" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

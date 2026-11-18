@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Chat strings (English). Converted from w1-i18n.json.
+     stop_button / stopped are OWNED BY W2 — not defined here. -->
+<resources>
+    <string name="chat_api_error">No response from Gemini</string>
+    <string name="chat_clear">Clear</string>
+    <string name="chat_clear_confirm">Do you want to clear the whole chat?</string>
+    <string name="chat_cleared">Chat cleared</string>
+    <string name="chat_copied">Copied</string>
+    <string name="chat_copy">Copy</string>
+    <string name="chat_copy_failed">Copy failed</string>
+    <string name="chat_empty_reply">Gemini returned an empty reply</string>
+    <string name="chat_empty_text">Type your question here or press the mic and speak.</string>
+    <string name="chat_empty_title">TECHTONICPK AI</string>
+    <string name="chat_input_placeholder">Type your question</string>
+    <string name="chat_mic">Mic</string>
+    <string name="chat_no_key">No Gemini API key is set. Please add your key in Settings first.</string>
+    <string name="chat_search_placeholder">Search chat history</string>
+    <string name="chat_send">Send</string>
+    <string name="chat_send_failed">Failed to send the message</string>
+    <string name="chat_share_whatsapp">WhatsApp</string>
+    <string name="chat_typing">Typing</string>
+    <string name="chat_voice_failed">Could not hear you, please try again</string>
+    <string name="chat_voice_unsupported">Voice recognition is not available on this phone</string>
+    <string name="chat_stopped">Reply stopped</string>
+    <string name="chat_speak">Speak</string>
+    <string name="chat_stop_speaking">Stop speaking</string>
+    <string name="chat_server_busy">The Gemini server is busy, please try again in a little while</string>
+    <string name="chat_fallback_used">Answered using the lighter model</string>
+    <string name="chat_offline">No internet connection — please check your connection</string>
+    <string name="chat_error">Request rejected — please check your Gemini key in Settings</string>
+</resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- W3 owns these keys. Urdu (default). Identical key set in values-en. -->
+
+    <!-- Morning Briefing -->
+    <string name="brief_bayan_open">آج کے عالم کو یوٹیوب پر تلاش کریں</string>
+    <string name="brief_bayan_title">آج کا بیان</string>
+    <string name="brief_bayan_today">آج کے عالم: {scholar} — یوٹیوب پر تلاش کریں</string>
+    <string name="brief_date_title">تاریخ</string>
+    <string name="brief_done">بریفنگ تیار ہے۔</string>
+    <string name="brief_err_offline">انٹرنیٹ نہیں ہے — موسم اور اوقات نہیں مل سکے</string>
+    <string name="brief_err_prayers">نمازوں کے اوقات نہیں مل سکے۔</string>
+    <string name="brief_err_weather">موسم کی معلومات نہیں مل سکیں۔</string>
+    <string name="brief_generate">بریفنگ تیار کریں</string>
+    <string name="brief_generate_first">پہلے بریفنگ تیار کریں۔</string>
+    <string name="brief_hijri_suffix">ھ</string>
+    <string name="brief_humidity">نمی</string>
+    <string name="brief_intro">آج کی تاریخ، لیہ کا موسم، نمازوں کے اوقات اور آپ کے نوٹس — ایک جگہ۔</string>
+    <string name="brief_loading">بریفنگ تیار ہو رہی ہے…</string>
+    <string name="brief_no_notes">کوئی نوٹ نہیں ہے۔</string>
+    <string name="brief_notes_count">کل {n} نوٹس ہیں۔</string>
+    <string name="brief_notes_title">نوٹس</string>
+    <string name="brief_partial">بریفنگ جزوی طور پر تیار ہے — کچھ معلومات نہیں مل سکیں۔</string>
+    <string name="brief_pinned">اہم</string>
+    <string name="brief_prayer_asr">عصر</string>
+    <string name="brief_prayer_dhuhr">ظہر</string>
+    <string name="brief_prayer_fajr">فجر</string>
+    <string name="brief_prayer_isha">عشاء</string>
+    <string name="brief_prayer_maghrib">مغرب</string>
+    <string name="brief_prayer_sunrise">طلوع آفتاب</string>
+    <string name="brief_prayers_title">نمازوں کے اوقات — لیہ</string>
+    <string name="brief_speak">بریفنگ سنائیں</string>
+    <string name="brief_speak_no_notes">آج کوئی نوٹ نہیں ہے</string>
+    <string name="brief_speak_notes">آپ کے {n} نوٹس ہیں</string>
+    <string name="brief_speak_prayer">اگلی نماز {name} ہے، {time} بجے</string>
+    <string name="brief_speak_unavailable">آواز کی سہولت دستیاب نہیں ہے۔</string>
+    <string name="brief_speak_weather">موسم {label} ہے، درجہ حرارت {temp} ڈگری سینٹی گریڈ ہے</string>
+    <string name="brief_speaking">بریفنگ سنائی جا رہی ہے…</string>
+    <string name="brief_status_idle">بریفنگ تیار کرنے کے لیے اوپر والا بٹن دبائیں۔</string>
+    <string name="brief_stop">روکیں</string>
+    <string name="brief_stop_speaking">سننا روکیں</string>
+    <string name="brief_stopped">بریفنگ روک دی گئی۔</string>
+    <string name="brief_temp">درجہ حرارت</string>
+    <string name="brief_title">صبح کی بریفنگ</string>
+    <string name="brief_today">آج</string>
+    <string name="brief_today_notes">آج کے نوٹس</string>
+    <string name="brief_weather_title">موسم — لیہ</string>
+    <string name="brief_wind">ہوا کی رفتار</string>
+    <string name="brief_wx_clear">صاف</string>
+    <string name="brief_wx_fog">دھند</string>
+    <string name="brief_wx_partly">جزوی ابر آلود</string>
+    <string name="brief_wx_rain">بارش</string>
+    <string name="brief_wx_snow">برف</string>
+    <string name="brief_wx_storm">گرج چمک</string>
+    <string name="brief_wx_unknown">موسم کی معلومات</string>
+
+    <!-- Bayan scholars -->
+    <string name="bayan_intro">اپنے پسندیدہ عالم کا نام دبائیں — یوٹیوب پر ان کا تازہ بیان تلاش ہو جائے گا۔</string>
+    <string name="bayan_scholar_ajmal">پیر اجمل رضا قادری</string>
+    <string name="bayan_scholar_habib">مولانا عبد الحبیب عطاری</string>
+    <string name="bayan_scholar_imran">مولانا محمد عمران عطاری</string>
+    <string name="bayan_scholar_salman">مفتی سلمان اظہری</string>
+    <string name="bayan_scholar_samar">مفتی محمد سمر عباس عطاری</string>
+    <string name="bayan_scholar_saqib">محمد رضا ثاقب مصطفائی</string>
+    <string name="bayan_search_yt">یوٹیوب پر تازہ بیان تلاش کریں</string>
+    <string name="bayan_title">بیان</string>
+
+    <!-- Hisab tools -->
+    <string name="hisab_calc_div_zero">صفر سے تقسیم ممکن نہیں</string>
+    <string name="hisab_calc_error">غلط حساب</string>
+    <string name="hisab_calc_title">کیلکولیٹر</string>
+    <string name="hisab_conv_from">سے</string>
+    <string name="hisab_conv_invalid">درست مقدار لکھیں</string>
+    <string name="hisab_conv_mismatch">وزن اور لمبائی آپس میں تبدیل نہیں ہو سکتے</string>
+    <string name="hisab_conv_result_empty">مقدار لکھ کر یونٹ منتخب کریں</string>
+    <string name="hisab_conv_title">یونٹ کنورٹر</string>
+    <string name="hisab_conv_to">تک</string>
+    <string name="hisab_conv_value">مقدار</string>
+    <string name="hisab_conv_value_ph">مقدار لکھیں</string>
+    <string name="hisab_currency">روپے</string>
+    <string name="hisab_milk_calc">حساب کریں</string>
+    <string name="hisab_milk_clear">سب صاف کریں</string>
+    <string name="hisab_milk_clear_confirm">کیا دودھ کے تمام اندراج حذف کر دیے جائیں؟</string>
+    <string name="hisab_milk_cleared">تمام اندراج صاف ہو گئے</string>
+    <string name="hisab_milk_empty">ابھی کوئی اندراج نہیں ہے</string>
+    <string name="hisab_milk_invalid">درست لیٹر اور نرخ لکھیں</string>
+    <string name="hisab_milk_litres">لیٹر</string>
+    <string name="hisab_milk_litres_ph">لیٹر لکھیں</string>
+    <string name="hisab_milk_rate">فی لیٹر نرخ (روپے)</string>
+    <string name="hisab_milk_rate_ph">نرخ لکھیں</string>
+    <string name="hisab_milk_result_empty">لیٹر اور نرخ لکھ کر حساب کریں</string>
+    <string name="hisab_milk_saved">محفوظ شدہ اندراج</string>
+    <string name="hisab_milk_saved_msg">اندراج محفوظ ہو گیا</string>
+    <string name="hisab_milk_title">دودھ کا حساب</string>
+    <string name="hisab_milk_total">مجموعی رقم</string>
+    <string name="hisab_title">حساب کتاب</string>
+    <string name="hisab_unit_gaz">گز</string>
+    <string name="hisab_unit_kg">کلوگرام</string>
+    <string name="hisab_unit_maund">من</string>
+    <string name="hisab_unit_metre">میٹر</string>
+    <string name="hisab_unit_yard">یارڈ</string>
+
+    <!-- Notes -->
+    <string name="note_add">شامل کریں</string>
+    <string name="note_added">نوٹ محفوظ ہو گیا</string>
+    <string name="note_chip_home">گھر کا کام</string>
+    <string name="note_chip_milk">دودھ کا حساب</string>
+    <string name="note_chip_reminder">یاد دہانی</string>
+    <string name="note_chip_shop">دکان کا کام</string>
+    <string name="note_chips_label">فوری نوٹ</string>
+    <string name="note_date_label">تاریخ (اختیاری)</string>
+    <string name="note_delete">حذف کریں</string>
+    <string name="note_delete_confirm">کیا یہ نوٹ حذف کر دیا جائے؟</string>
+    <string name="note_deleted">نوٹ حذف ہو گیا</string>
+    <string name="note_empty">ابھی کوئی نوٹ نہیں ہے</string>
+    <string name="note_empty_text">پہلے نوٹ لکھیں</string>
+    <string name="note_input_ph">نیا نوٹ لکھیں...</string>
+    <string name="note_no_result">اس تلاش سے کوئی نوٹ نہیں ملا</string>
+    <string name="note_pin">پن کریں</string>
+    <string name="note_search_ph">نوٹس میں تلاش کریں...</string>
+    <string name="note_time_label">وقت (اختیاری)</string>
+    <string name="note_title">نوٹس اور یاد دہانی</string>
+    <string name="note_today">آج</string>
+    <string name="note_unpin">پن ہٹائیں</string>
+
+    <!-- Reminder alerts -->
+    <string name="reminder_dismiss">ختم کریں</string>
+    <string name="reminder_no_permission">اطلاع کی اجازت نہیں ملی — یاد دہانی نہیں لگائی گئی</string>
+    <string name="reminder_past">یہ وقت گزر چکا ہے — یاد دہانی نہیں لگی</string>
+    <string name="reminder_set">یاد دہانی لگ گئی</string>
+    <string name="reminder_title">یاد دہانی</string>
+
+    <!-- Tasbih -->
+    <string name="tasbih_reached">ہدف مکمل ہو گیا — ماشاءاللہ</string>
+    <string name="tasbih_reset">آج کی گنتی صفر کریں</string>
+    <string name="tasbih_reset_confirm">کیا آج کی تسبیح کی گنتی صفر کر دی جائے؟</string>
+    <string name="tasbih_target">ہدف</string>
+    <string name="tasbih_title">تسبیح</string>
+
+    <!-- Qibla -->
+    <string name="qibla_for_layyah">قبلہ کی سمت — لیہ کے لیے</string>
+    <string name="qibla_no_sensor">اس فون میں کمپاس سینسر نہیں ہے</string>
+    <string name="qibla_title">قبلہ</string>
+
+    <!-- Voice notes -->
+    <string name="voice_note_saved">آواز والا نوٹ محفوظ ہو گیا: {text}</string>
+</resources>
