@@ -1,11 +1,63 @@
-# Mobile JARVIS — Native Android Build Report v1.0.1
+# Mobile JARVIS — Native Android Build Report v1.0.2
 
-**Date:** 2026-11-18 · **Version:** 1.0.1 (versionCode 2) · **Package:** `pk.techtonic.jarvis`
-**Scope-locked fix round** for the 6 defects Muhammad Riyaz found on his
-phone on 2026-11-18 (v1.0.0, commit 7f9868c). No new features; nothing
-else changed.
+**Date:** 2026-11-21 · **Version:** 1.0.2 (versionCode 3) · **Package:** `pk.techtonic.jarvis`
+**Scope-locked fix round** for the 2 defects Muhammad Riyaz reported on
+2026-11-21 (v1.0.1): the Kitab voice sounded robotic/broken, and books
+did not fully import into the library. Both causes were proven from the
+v1.0.1 source before fixing. No new features; nothing else changed. Every
+v1.0.1 fix survives (card Play, reader-only Delete, versioned re-seed,
+chat error rows, Test Key status line).
 
-## v1.0.1 — what was fixed
+## v1.0.2 — what was fixed
+
+1. **Voice robotic/broken — TTS never knew the text was Urdu:**
+   `TtsManager.applySettings()` never called `setLanguage()` (zero
+   occurrences in the app), so the engine read Urdu text in its default
+   language (English on his Vivo). It now calls
+   `setLanguage(Locale("ur"))`; a missing/unsupported result falls back
+   to the engine default and sets `TtsManager.urduVoiceMissing`, which
+   Settings shows as the install-Urdu-voice hint. When no voice is saved
+   and an Urdu voice is installed, the first Urdu voice is auto-selected
+   and saved; a manual picker choice always wins.
+2. **No pauses between paragraphs:** `TextCleaner.stripForSpeech`
+   collapsed every paragraph break to a single space. It now turns a
+   paragraph break into a full stop (only when the paragraph does not
+   already end with sentence punctuation), so the engine pauses. The
+   no-markers guarantee (no `*`, `#`, backtick, `@`, `_`) still holds —
+   covered by the JVM gate.
+3. **Audible gaps between chunks:** `ReadingService.saveBookmark` did a
+   SQLite write on the main thread between every chunk. Bookmark writes
+   now run on a background single-thread writer; the in-memory position
+   still updates at once.
+4. **Library could never show all books (CursorWindow):**
+   `JarvisDb.allBooks()` loaded the FULL TEXT of every book; the 10
+   pre-loaded books total 3.8 MB against Android's 2 MB CursorWindow
+   limit, so rows past the window were silently dropped. `allBooks()`
+   now returns metadata only (id, title, position, updated, stored word
+   count, LENGTH(text)); full text loads per book via `bookById()`, and
+   the reader preview via a SUBSTR query. DB v1→v2 migration adds the
+   `words` column (ALTER TABLE + per-row backfill); `addBook` and backup
+   import compute it at insert.
+5. **Seeder duplicates:** the v1.0.1 existing-titles check used the same
+   broken full-text query, so it re-inserted titles it could not see.
+   The check now uses a titles-only query, seed version is 3, and each
+   v3 seed run first dedups (keeps the furthest bookmark per title).
+6. **False "kitab added":** a failed insert still toasted success, and a
+   file that could not be read failed silently. Insert failure now shows
+   an error toast and keeps the dialog open (pasted text not lost);
+   success toasts the real word count; an unreadable/empty file shows an
+   error toast.
+7. **Playback could stall silently:** if a TTS onDone/onError never
+   fired, the book hung forever. A watchdog now pauses (bookmark saved)
+   after a timeout scaled to chunk length and speech rate (chars/15 per
+   sec + 30 s margin, minimum 60 s), guarded by utterance token +
+   generation so a late callback cannot double-advance.
+8. **Gate:** `run_gate.sh` now has a permanent [5/5] aapt2 LINK step
+   (compile alone missed a link error on Tilawa) and clears the compiled
+   resource dir before compiling, so stale .flat files cannot hide a
+   defect.
+
+## v1.0.1 — what was fixed (2026-11-18)
 
 1. **Kitab Play hidden (he deleted «اے آئی کیا ہے؟» by mistake):** every
    book card now carries a clear Play button — tapping it opens the reader

@@ -23,6 +23,15 @@ import java.util.UUID
  * [JarvisPrefs.ttsVoiceName] (saved Voice.name, "" = engine default),
  * [JarvisPrefs.ttsRate] / [JarvisPrefs.ttsPitch] (clamped 0.5–2.0).
  *
+ * v1.0.2: [applySettings] sets the engine language to Urdu
+ * ([TextToSpeech.setLanguage]) — before this the engine read Urdu text
+ * in its default language (English on the user's Vivo), which is why
+ * the voice sounded robotic and broken. When no voice is saved and an
+ * Urdu voice is installed, the first Urdu voice is auto-selected and
+ * saved; a manual picker choice always wins. When Urdu language data
+ * is missing or unsupported, [urduVoiceMissing] is set so Settings can
+ * show the install-voice hint.
+ *
  * Every public method is safe to call before init completes or after
  * shutdown: nothing throws, nothing queues silently — speak-before-init
  * calls onError.
@@ -33,6 +42,16 @@ object TtsManager {
     private var prefs: JarvisPrefs? = null
     private var ready = false
     private val mainHandler = Handler(Looper.getMainLooper())
+
+    /**
+     * True when the last setLanguage(Urdu) reported the Urdu language
+     * data missing or unsupported — the engine is reading Urdu text in
+     * its default language instead. Recomputed on every applySettings();
+     * Settings shows the install-voice hint while this is true.
+     */
+    @Volatile
+    var urduVoiceMissing: Boolean = false
+        private set
 
     /** utteranceId -> (onDone, onError). Only the latest utterance is kept:
         speak() uses QUEUE_FLUSH, so an older utterance never completes. */
@@ -161,8 +180,38 @@ object TtsManager {
         } catch (ignored: Exception) {
             // Engine rejected the values; keep its defaults.
         }
+        // v1.0.2: tell the engine the text is URDU. Before this the
+        // engine read Urdu text in its default language (English on
+        // the user's Vivo) — robotic, mispronounced, broken-sounding
+        // speech. A missing/unsupported result falls back to the engine
+        // default and records the flag for Settings to show.
+        try {
+            val langResult = engine.setLanguage(Locale("ur"))
+            urduVoiceMissing = langResult == TextToSpeech.LANG_MISSING_DATA ||
+                langResult == TextToSpeech.LANG_NOT_SUPPORTED
+        } catch (ignored: Exception) {
+            urduVoiceMissing = false
+        }
         val savedName = p.ttsVoiceName
-        if (savedName.isBlank()) return // engine default
+        if (savedName.isBlank()) {
+            // No manual choice: auto-pick the first installed Urdu voice
+            // so the user gets Urdu speech without opening the picker.
+            // A manual choice (savedName) always wins over this.
+            val urdu = try {
+                engine.voices?.firstOrNull { it.locale?.language == "ur" }
+            } catch (ignored: Exception) {
+                null
+            }
+            if (urdu != null) {
+                try {
+                    engine.voice = urdu
+                    p.ttsVoiceName = urdu.name
+                } catch (ignored: Exception) {
+                    // Voice unusable; keep the engine default.
+                }
+            }
+            return
+        }
         val match = try {
             engine.voices?.firstOrNull { it.name == savedName }
         } catch (ignored: Exception) {

@@ -19,13 +19,18 @@ import pk.techtonic.jarvis.data.JarvisPrefs
  * therefore comes back on the next upgrade that bumps the version;
  * within one version a deliberate delete stays deleted.
  *
+ * v1.0.2: the existing-titles check reads titles ONLY ([JarvisDb.allBookTitles])
+ * — v1.0.1 read the whole library through the 2 MB CursorWindow, which
+ * could not see every title and so re-inserted duplicates. Each v3 seed
+ * run first removes those duplicates ([JarvisDb.deduplicateBooks]).
+ *
  * The manifest is parsed with a small regex — the file is a flat array of
  * {"file","id","title"} objects, and no JSON library is needed for it.
  */
 object BookSeeder {
 
-    /** Seed version this build requires (v1.0.0 = 1, v1.0.1 = 2). */
-    const val CURRENT_SEED_VERSION = 2
+    /** Seed version this build requires (v1.0.0 = 1, v1.0.1 = 2, v1.0.2 = 3). */
+    const val CURRENT_SEED_VERSION = 3
 
     @Volatile private var seeding = false
     private val pendingDone = ArrayList<() -> Unit>()
@@ -61,10 +66,19 @@ object BookSeeder {
         val appContext = context.applicationContext
         Thread {
             try {
+                // v1.0.2: clear any duplicates the v1.0.1 seeder created
+                // (its existing-check could not see rows past the 2 MB
+                // CursorWindow, so it re-inserted titles that were
+                // already there). Idempotent: later runs find nothing.
+                try {
+                    db.deduplicateBooks()
+                } catch (e: Exception) {
+                    // Dedup failure must never block seeding.
+                }
                 val manifest = readAsset(appContext, "books/books.json")
                 var allOk = manifest != null
                 if (manifest != null) {
-                    val existing = db.allBooks().map { it.title }.toHashSet()
+                    val existing = db.allBookTitles().toHashSet()
                     for (obj in OBJECT_RE.findAll(manifest)) {
                         val file = FILE_RE.find(obj.value)?.groupValues?.getOrNull(1)
                             ?: continue

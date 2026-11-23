@@ -191,7 +191,10 @@ class VoicePickerActivity : Activity() {
         } else {
             loadingText.visibility = View.GONE
             voiceList.visibility = View.VISIBLE
-            if (TtsManager.hasUrduVoice()) {
+            // v1.0.2: also show the notice when the engine reports Urdu
+            // unavailable even though a voice row exists (odd engines
+            // list a voice setLanguage() still rejects).
+            if (TtsManager.hasUrduVoice() && !TtsManager.urduVoiceMissing) {
                 noUrduText.visibility = View.GONE
                 openTtsButton.visibility = View.GONE
             } else {

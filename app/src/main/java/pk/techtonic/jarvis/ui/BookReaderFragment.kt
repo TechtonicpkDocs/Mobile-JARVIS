@@ -67,7 +67,6 @@ class BookReaderFragment : Fragment() {
     private var autoOpenAttempted = false
     private var currentBookId: Long = -1L
     private var inReader = false
-    private val wordCountCache = HashMap<Long, Int>()
 
     // Library views
     private var libraryView: View? = null
@@ -225,7 +224,6 @@ class BookReaderFragment : Fragment() {
                 loadingLibrary = false
                 if (!isAdded) return@runOnUiThread
                 books = loaded
-                wordCountCache.clear()
                 libraryLoaded = true
                 showLoading(false)
                 listAdapter?.notifyDataSetChanged()
@@ -315,8 +313,10 @@ class BookReaderFragment : Fragment() {
             val metaView = view.findViewById<TextView>(R.id.kitab_item_meta)
             val playButton = view.findViewById<Button>(R.id.kitab_item_play)
             titleView.text = book.title
-            val words = wordCountCache.getOrPut(book.id) { countWords(book.text) }
-            val total = book.text.length
+            // v1.0.2: library rows carry the stored word count and the
+            // text length — never the full text (CursorWindow limit).
+            val words = book.words
+            val total = book.textLength
             val pct = if (total > 0) (book.position * 100 / total) else 0
             metaView.text = getString(R.string.kitab_words, words) + "  •  " +
                 getString(R.string.kitab_progress, pct) + "  •  " +
@@ -332,20 +332,6 @@ class BookReaderFragment : Fragment() {
     private fun playBookFromCard(book: BookRow) {
         openReader(book.id)
         onPlayClicked()
-    }
-
-    private fun countWords(text: String): Int {
-        var count = 0
-        var inWord = false
-        for (c in text) {
-            if (c.isWhitespace()) {
-                inWord = false
-            } else if (!inWord) {
-                inWord = true
-                count++
-            }
-        }
-        return count
     }
 
     // ---- Add book ----
@@ -377,15 +363,30 @@ class BookReaderFragment : Fragment() {
             val text = textField.text.toString()
             if (title.isBlank() || text.isBlank()) return@setOnClickListener
             Thread {
+                var rowId = -1L
+                var words = 0
                 try {
-                    db.addBook(title, text)
+                    words = JarvisDb.countWords(text)
+                    rowId = db.addBook(title, text)
                 } catch (e: Exception) {
-                    // Insert failed: the refresh below shows the truth.
+                    rowId = -1L
                 }
                 activity?.runOnUiThread {
                     if (!isAdded) return@runOnUiThread
+                    // v1.0.2: a failed insert says so plainly — no false
+                    // "kitab added" — and the dialog stays open so the
+                    // pasted text is not lost. Success shows the real
+                    // word count, so the user sees the whole book landed.
+                    if (rowId == -1L) {
+                        Toast.makeText(activity, R.string.kitab_add_failed, Toast.LENGTH_LONG).show()
+                        return@runOnUiThread
+                    }
                     addDialog?.dismiss()
-                    Toast.makeText(activity, R.string.kitab_added, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        activity,
+                        getString(R.string.kitab_added_words, words),
+                        Toast.LENGTH_SHORT
+                    ).show()
                     refreshLibrary()
                 }
             }.start()
@@ -424,6 +425,7 @@ class BookReaderFragment : Fragment() {
         Thread {
             var text: String? = null
             var name: String? = null
+            var failed = false
             try {
                 act.contentResolver.openInputStream(uri)?.bufferedReader(Charsets.UTF_8)?.use {
                     text = it.readText()
@@ -436,11 +438,17 @@ class BookReaderFragment : Fragment() {
                 }
             } catch (e: Exception) {
                 text = null
+                failed = true
             }
             activity?.runOnUiThread {
                 if (!isAdded) return@runOnUiThread
                 val loaded = text
-                if (loaded.isNullOrBlank()) return@runOnUiThread
+                // v1.0.2: a file that cannot be read says so — never a
+                // silent no-op, and an empty file is not a book.
+                if (failed || loaded.isNullOrBlank()) {
+                    Toast.makeText(activity, R.string.kitab_load_failed, Toast.LENGTH_LONG).show()
+                    return@runOnUiThread
+                }
                 addTextField?.setText(loaded)
                 // Fill the title from the file name when it is empty.
                 val titleField = addTitleField
@@ -469,19 +477,38 @@ class BookReaderFragment : Fragment() {
         refreshReaderUi()
     }
 
-    /** Preview: the first chunk of the book, markers rendered as spans. */
+    /**
+     * Preview: the first chunk of the book, markers rendered as spans.
+     * The text comes from a SUBSTR query — library rows carry no text
+     * (v1.0.2 CursorWindow fix), so the preview loads per book on a
+     * background thread. A live playback session owns the chunk text:
+     * the preview never overwrites it, here or in the late callback.
+     */
     private fun showBookPreview(book: BookRow) {
-        val raw = book.text
-        if (raw.isEmpty()) {
-            readerChunkText?.text = ""
-            return
-        }
-        var end = minOf(900, raw.length)
-        if (end < raw.length) {
-            val space = raw.lastIndexOf(' ', end)
-            if (space > 100) end = space
-        }
-        readerChunkText?.text = TextCleaner.toDisplaySpanned(raw.substring(0, end))
+        if (ReadingState.bookId == book.id && ReadingState.chunkCount > 0) return
+        readerChunkText?.text = ""
+        Thread {
+            val preview = try {
+                db.bookPreview(book.id, PREVIEW_CHARS)
+            } catch (e: Exception) {
+                ""
+            }
+            activity?.runOnUiThread {
+                if (!isAdded || currentBookId != book.id) return@runOnUiThread
+                if (ReadingState.bookId == book.id && ReadingState.chunkCount > 0) return@runOnUiThread
+                if (preview.isEmpty()) {
+                    readerChunkText?.text = ""
+                    return@runOnUiThread
+                }
+                // Trim to a word boundary when the book continues past the preview.
+                var end = preview.length
+                if (book.textLength > preview.length) {
+                    val space = preview.lastIndexOf(' ', end)
+                    if (space > 100) end = space
+                }
+                readerChunkText?.text = TextCleaner.toDisplaySpanned(preview.substring(0, end))
+            }
+        }.start()
     }
 
     private fun refreshReaderUi() {
@@ -504,7 +531,7 @@ class BookReaderFragment : Fragment() {
             // Not playing this book: show the saved bookmark progress.
             val book = books.firstOrNull { it.id == currentBookId }
             if (book != null) {
-                val total = book.text.length
+                val total = book.textLength
                 val pct = if (total > 0) (book.position * 100 / total) else 0
                 readerProgressLabel?.text = getString(R.string.kitab_progress, pct)
                 readerProgressBar?.progress = pct.coerceIn(0, 100)
@@ -630,5 +657,8 @@ class BookReaderFragment : Fragment() {
 
     companion object {
         private const val REQUEST_PICK_BOOK = 2001
+
+        /** Preview length in chars (SUBSTR query — the reader's first page). */
+        private const val PREVIEW_CHARS = 900
     }
 }

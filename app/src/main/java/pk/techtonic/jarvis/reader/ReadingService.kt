@@ -20,6 +20,7 @@ import pk.techtonic.jarvis.data.JarvisPrefs
 import pk.techtonic.jarvis.speech.TtsManager
 import pk.techtonic.jarvis.ui.MainActivity
 import pk.techtonic.jarvis.util.TextCleaner
+import java.util.concurrent.Executors
 
 /**
  * Foreground service that reads a book aloud — the core of the Kitab
@@ -46,12 +47,19 @@ import pk.techtonic.jarvis.util.TextCleaner
  * - A new PLAY always stops the current playback first; a generation
  *   counter guards every async callback (cleaning thread, TTS onDone)
  *   so a stale callback can never advance a newer session.
+ * - v1.0.2: bookmark writes run on a background writer thread (a
+ *   SQLite write on the main thread between every chunk added audible
+ *   gaps), and a watchdog pauses instead of stalling forever when the
+ *   engine never reports a chunk done or failed.
  */
 class ReadingService : Service() {
 
     private lateinit var db: JarvisDb
     private lateinit var audioManager: AudioManager
     private val mainHandler = Handler(Looper.getMainLooper())
+
+    /** Single-thread writer for bookmarks — DB writes never block the main thread between chunks. */
+    private val bookmarkWriter = Executors.newSingleThreadExecutor()
 
     // Current session. Written on the main thread, except the cleaning
     // worker which checks [generation] before touching anything.
@@ -135,6 +143,12 @@ class ReadingService : Service() {
         stopCurrentSession(saveBookmark = true)
         ReadingState.isPlaying = false
         ReadingState.notifyListeners()
+        // Let the queued final bookmark write land, then stop the writer.
+        try {
+            bookmarkWriter.shutdown()
+        } catch (e: Exception) {
+            // Writer already gone; nothing to do.
+        }
         if (noisyRegistered) {
             try {
                 unregisterReceiver(noisyReceiver)
@@ -261,6 +275,17 @@ class ReadingService : Service() {
         saveBookmark(chunkStarts[currentIndex])
         updateNotification()
         val token = ++utteranceToken
+        // v1.0.2 watchdog: if the engine never reports this chunk done
+        // or failed, pause with the bookmark saved instead of stalling
+        // forever. The token/generation guards make a late callback
+        // harmless — a completed chunk already advanced the token.
+        mainHandler.postDelayed({
+            if (gen == generation && token == utteranceToken &&
+                ReadingState.isPlaying
+            ) {
+                pausePlayback()
+            }
+        }, watchdogTimeoutMs(text.length))
         TtsManager.speak(
             text,
             onDone = {
@@ -377,12 +402,39 @@ class ReadingService : Service() {
     private fun saveBookmark(position: Int) {
         if (currentBookId == -1L) return
         val safe = position.coerceIn(0, totalChars)
+        val bookId = currentBookId
+        // v1.0.2: the write runs on the background writer thread — a
+        // SQLite write on the main thread between every chunk added
+        // audible gaps. The in-memory position updates at once, so the
+        // UI always shows the truth even before the write lands.
         try {
-            db.setBookPosition(currentBookId, safe)
+            bookmarkWriter.execute {
+                try {
+                    db.setBookPosition(bookId, safe)
+                } catch (e: Exception) {
+                    // A failed write must never kill playback.
+                }
+            }
         } catch (e: Exception) {
-            // A failed write must never kill playback.
+            // Executor gone (service destroyed): the next save retries.
         }
         ReadingState.position = safe
+    }
+
+    /**
+     * Watchdog delay for one chunk: expected speaking time at ~15
+     * chars/sec scaled by the current speech rate, + 30 s margin,
+     * minimum 60 s. At 1.0x a 900-char chunk gets 90 s; at 0.5x it gets
+     * 150 s, so slow speech never trips the watchdog.
+     */
+    private fun watchdogTimeoutMs(chars: Int): Long {
+        val rate = try {
+            JarvisPrefs(applicationContext).ttsRate.coerceIn(0.5f, 2.0f)
+        } catch (e: Exception) {
+            1.0f
+        }
+        val seconds = chars / (15.0 * rate) + 30.0
+        return maxOf(60_000L, (seconds * 1000.0).toLong())
     }
 
     private fun isVoiceEnabled(): Boolean {

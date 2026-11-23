@@ -20,6 +20,9 @@
     <string name="kitab_delete_confirm">کیا آپ "%1$s" حذف کرنا چاہتے ہیں؟</string>
     <string name="kitab_deleted">کتاب حذف ہو گئی</string>
     <string name="kitab_added">کتاب شامل ہو گئی</string>
+    <string name="kitab_added_words">کتاب شامل ہو گئی — %1$d الفاظ</string>
+    <string name="kitab_add_failed">کتاب شامل نہیں ہو سکی — دوبارہ کوشش کریں</string>
+    <string name="kitab_load_failed">فائل نہیں کھل سکی — دوبارہ کوشش کریں</string>
     <string name="kitab_empty">ابھی کوئی کتاب نہیں ہے</string>
     <string name="kitab_loading">کتابیں تیار ہو رہی ہیں…</string>
     <string name="kitab_speed">رفتار</string>

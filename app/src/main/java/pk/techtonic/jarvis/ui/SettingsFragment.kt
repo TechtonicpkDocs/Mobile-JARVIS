@@ -247,7 +247,14 @@ class SettingsFragment : Fragment() {
             act.getString(R.string.set_ttsvoice_default)
         }
         val rate = String.format(Locale.US, "%.1fx", prefs.ttsRate)
-        voiceSummary.text = act.getString(R.string.set_voice_summary, voiceName, rate)
+        var summary = act.getString(R.string.set_voice_summary, voiceName, rate)
+        // v1.0.2: Urdu language data missing on this phone — the engine
+        // is reading Urdu in its default language. Say so here (the
+        // voice picker opens the system TTS settings to install it).
+        if (TtsManager.urduVoiceMissing) {
+            summary += "\n" + act.getString(R.string.voice_no_urdu)
+        }
+        voiceSummary.text = summary
     }
 
     // ---- (4) Backup ----

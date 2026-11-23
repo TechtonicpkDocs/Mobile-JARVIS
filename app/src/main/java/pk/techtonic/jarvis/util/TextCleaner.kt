@@ -42,10 +42,30 @@ object TextCleaner {
      * Pure Kotlin: strip ALL Markdown/symbols for TTS. Collapses all
      * whitespace/newlines to single spaces. The result contains no `*`,
      * no `#`, no backtick, no `@`, no `_`.
+     *
+     * v1.0.2: paragraph breaks become a spoken pause — a full stop is
+     * added when the paragraph does not already end with sentence
+     * punctuation, so the engine pauses between paragraphs instead of
+     * running them together (v1.0.1 collapsed every break to one space).
      */
     fun stripForSpeech(text: String): String {
-        return WHITESPACE_RUN.replace(markdownToPlain(text), " ").trim()
+        val plain = markdownToPlain(text)
+        val withPauses = StringBuilder()
+        var first = true
+        for (para in plain.split("\n\n")) {
+            val trimmed = para.trim()
+            if (trimmed.isEmpty()) continue
+            if (!first) withPauses.append(' ')
+            withPauses.append(trimmed)
+            if (!isSentenceEnd(trimmed.last())) withPauses.append('.')
+            first = false
+        }
+        return WHITESPACE_RUN.replace(withPauses.toString(), " ").trim()
     }
+
+    /** Sentence ends, Latin + Urdu (same set the reader chunks on). */
+    private fun isSentenceEnd(c: Char): Boolean =
+        c == '.' || c == '!' || c == '?' || c == '۔' || c == '؟'
 
     /**
      * Pure Kotlin: plain text with markers removed but words kept, kept as

@@ -1,0 +1,13 @@
+# Mobile JARVIS v1.0.2 — push to GitHub (Termux, one command per line)
+# Repo pehle se bana hua hai; ~/Mobile-JARVIS mein v1.0.1 maujood hai
+# Pehle v1.0.2 wali zip ko Download folder mein save kar lein
+# Zip: 102 files, 8.1 MB download (15.2 MB unzip ke baad)
+# Push sirf badli hui files bhejta hai (13 files, chhota) — 1-2 minute mein ho jana chahiye
+# Progress: "Counting objects" phir "Writing objects: 45%" — % barhta rahe to wait karein
+# Agar % 2 minute se zyada ek jagah ruka rahe ya "error" aaye to Volume Down + C karke bata dein
+cd ~/Mobile-JARVIS
+git pull origin main
+unzip -o /storage/emulated/0/Download/mobile-jarvis-v1.0.2-source.zip
+git add -A
+git commit -m "Mobile JARVIS v1.0.2"
+git push origin main

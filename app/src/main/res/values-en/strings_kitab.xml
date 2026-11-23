@@ -20,6 +20,9 @@
     <string name="kitab_delete_confirm">Delete "%1$s"?</string>
     <string name="kitab_deleted">Book deleted</string>
     <string name="kitab_added">Book added</string>
+    <string name="kitab_added_words">Book added — %1$d words</string>
+    <string name="kitab_add_failed">Could not add the book — please try again</string>
+    <string name="kitab_load_failed">Could not open the file — please try again</string>
     <string name="kitab_empty">No books yet</string>
     <string name="kitab_loading">Loading books…</string>
     <string name="kitab_speed">Speed</string>

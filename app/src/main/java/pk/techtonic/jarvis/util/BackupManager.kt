@@ -104,7 +104,11 @@ object BackupManager {
         root.put("chat", chat)
 
         val books = JSONArray()
-        for (row in db.allBooks()) {
+        // v1.0.2: load each book's text by id — the library list no
+        // longer carries full texts (CursorWindow 2 MB limit). The
+        // exported JSON shape is unchanged.
+        for (id in db.allBookIds()) {
+            val row = db.bookById(id) ?: continue
             if (PRELOADED_TITLES.contains(row.title.trim())) continue
             val o = JSONObject()
             o.put("title", row.title)
@@ -174,8 +178,10 @@ object BackupManager {
                 wdb.insert("chat", null, cv)
             }
             // Books merge: skip any title already in the library.
+            // v1.0.2: titles only (never full texts) + the stored word
+            // count on insert, so a restored book shows its real count.
             val existingTitles = HashSet<String>()
-            for (book in db.allBooks()) existingTitles.add(book.title.trim())
+            for (title in db.allBookTitles()) existingTitles.add(title.trim())
             for (book in parsed.books) {
                 if (existingTitles.contains(book.title.trim())) continue
                 val cv = ContentValues().apply {
@@ -183,6 +189,7 @@ object BackupManager {
                     put("text", book.text)
                     put("position", book.position)
                     put("updated", book.updated)
+                    put("words", JarvisDb.countWords(book.text))
                 }
                 wdb.insert("books", null, cv)
                 existingTitles.add(book.title.trim())
